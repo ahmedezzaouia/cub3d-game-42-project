@@ -8,9 +8,9 @@ its parent of fps games , you need try to play it.
 |  -> your program must be smooth !   																												|
 |  -> your porgram must be working with any resulution and any "valid" map	!						    											|
 |  -> you must have diferent texture evry direction	{North, South, East, West} !																	|
-|  -> you need to to aet diferent colors for "floor" and "celing" (it can be changed) !																|
+|  -> you need to to get diferent colors for "floor" and "celing" (it can be changed) !																|
 |  -> right and left arrow key let let lock right and left !																						|
-|  -> "W,S,A,D" keys let ou mouve !	    																											|
+|  -> "W,S,A,D" keys let you mouve !	    																											|
 |  -> ESC must close the window and quit the program cleanly !																						|
 |  -> Clicking on the red cross on the window’s frame must close the window and quit the program cleanly											|
 |  -> The use of images of the minilibX is strongly recommended 																					|
