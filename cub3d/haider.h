@@ -33,7 +33,7 @@ typedef struct t_list
     char *east_path;
     char *floor_color;
     char *ceilling_color;
-    char *map_buffer;
+    char **map_buffer;
     char *buffer;
     int *F_RGB;
     int *C_RGB;
@@ -56,6 +56,9 @@ void check_east_texture_path(s_cub *cub);
 char *get_texture_path(char *ptr);
 
 int *get_rgb_color(char *str);
+void check_map_if_valid(s_cub *cub);
+
+char	*ft_bspace(char *st, size_t len);
 // void error_bad_path(void);
 
 #endif

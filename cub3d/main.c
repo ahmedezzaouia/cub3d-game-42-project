@@ -34,6 +34,7 @@ s_cub *cub_init(char **argv)
     // get_floor_rgb_color(cub);
     cub->F_RGB = get_rgb_color(cub->floor_color);
     cub->C_RGB =  get_rgb_color(cub->ceilling_color);
+    check_map_if_valid(cub);
 
     return (cub);
 }
