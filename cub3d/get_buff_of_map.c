@@ -18,14 +18,9 @@ void get_buff_of_map(s_cub *cub, char *path)
     int a;
     int fd;
     int map_lines;
-    int len;
-    int len1;
     int loop;
-    char *sp_str;
 
     fd = open(path, O_RDWR);
-    len = 0;
-    len1 = 0;
     loop = 0;
     map_lines = 0;
 
@@ -58,11 +53,8 @@ void get_buff_of_map(s_cub *cub, char *path)
             cub->floor_color = cub->buffer;
         else if(cub->buffer[0] == 'C')
             cub->ceilling_color = cub->buffer;
-        else if(cub->buffer[0] == '1' || cub->buffer[0] == ' ' || cub->buffer[0] == '\n')
+        else
         {
-            len = ft_strlen(cub->buffer);
-            if(len >len1)
-                len1 = len;
             free(cub->buffer);
             ++map_lines;
         }
@@ -85,20 +77,25 @@ void get_buff_of_map(s_cub *cub, char *path)
         exit(1);
     }
     a = -1;
-    sp_str = malloc(sizeof(char) * len1 + 1);
-    sp_str = ft_bspace(sp_str,len1 - 2);
-
+    loop = 0;
     while(true)
     {
         cub->buffer = get_next_line(fd);
         if(cub->buffer == NULL)
             break;
-        else if(cub->buffer[0] == '1' || cub->buffer[0] == ' ')
-            cub->map_buffer[++a] = cub->buffer;
-        else if(cub->buffer[0] == '\n')
+        else if(cub->buffer[0] != 'N' && cub->buffer[0] != 'S'
+            && cub->buffer[0] != 'W' && cub->buffer[0] != 'E'
+            && cub->buffer[0] != 'F' && cub->buffer[0] != 'C'
+            && cub->buffer[0] != '\n')
         {
-            cub->map_buffer[++a] = sp_str;
+            ++loop;
+            cub->map_buffer[++a] = cub->buffer;
+        }
+        else if(cub->buffer[0] == '\n' && loop)
+        {
+            write(2,"Error map have a newline\n",25);
             free(cub->buffer);
+            exit(1);
         }
         else
             free(cub->buffer);

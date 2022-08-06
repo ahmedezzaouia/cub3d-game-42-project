@@ -16,7 +16,6 @@ void check_map_if_valid(s_cub *cub)
 {
     int a;
     int b;
-    int c;
     int up_bad_map;
     int down_bad_map;
     int right_bad_map;
@@ -32,133 +31,52 @@ void check_map_if_valid(s_cub *cub)
             down_bad_map = 0;
             right_bad_map = 0;
             left_bad_map = 0;
-            if(cub->map_buffer[0][0] == '1')
+            if(cub->map_buffer[0][b] == '0')
             {
-                c = -1;
-                while(cub->map_buffer[0][++c])
-                {    
-                    if(cub->map_buffer[0][c] == '0')
-                    {
-                        printf("here\n");
-                        left_bad_map = 1;
-                        break;
-                    }
-                }    
-                c = -1;
-                while(cub->map_buffer[++c][0])
-                {    
-                    if(cub->map_buffer[c][0] == '0')
-                    {
-                        printf("here1\n");
-                        left_bad_map = 1;
-                        break;
-                    }
-                }
+                printf("bad map\n");
+                exit(1);
             }
-
-            if(cub->map_buffer[a][b] == ' ')
+            else if(cub->map_buffer[a][0] == '0')
             {
-                c = a + 1;
-                while(--c >= 0)
+                printf("bad map 2\n");
+                exit(1);
+            }
+            else if(cub->map_buffer[a][b] == '0' && cub->map_buffer[a + 1] == NULL)
+            {
+                printf("bad map 3\n");
+                exit(1);
+            }
+            else if(cub->map_buffer[a][b] == '0' && cub->map_buffer[a][b + 1] == '\n')
+            {
+                printf("bad map 4\n");
+                exit(1);
+            }
+            else if(cub->map_buffer[a][b] == '0')
+            {
+                if(cub->map_buffer[a][b] == '0' && cub->map_buffer[a + 1][b] == ' ')
+                    up_bad_map = 1;
+                else if(cub->map_buffer[a][b] == '0'
+                    && (cub->map_buffer[a - 1][b] == ' ' || b > ft_strlen(cub->map_buffer[a - 1] + 3)))
+                    down_bad_map = 1;
+                else if(cub->map_buffer[a][b] == '0'
+                    && (cub->map_buffer[a][b + 1] == ' ' || b > ft_strlen(cub->map_buffer[a + 1] + 3)))
+                    right_bad_map = 1;
+                else if(cub->map_buffer[a][b] == '0' && cub->map_buffer[a][b - 1] == ' ')
+                    left_bad_map = 1;
+                if(up_bad_map == 1 || down_bad_map == 1 || right_bad_map == 1 || left_bad_map == 1)
                 {
-                    if(cub->map_buffer[c][b] == '1' && c == 0)
-                        break;
-                    else if(cub->map_buffer[c][b] == '1' && cub->map_buffer[c + 1][b] == ' ')
-                        break;
-                    else if(cub->map_buffer[c][b] == '0' && cub->map_buffer[c + 1][b] == ' ')
-                    {
-                        up_bad_map = 1;
-                        break;
-                    }
-                    // else if(cub->map_buffer[c][b] != '1' && c == 0)
-                    //     up_bad_map = 2;
+                    if(up_bad_map == 1)
+                        printf("up bad map\n");
+                    else if(down_bad_map == 1)
+                        printf("down bad map\n");
+                    else if(left_bad_map == 1)
+                        printf("left bad map\n");
+                    else if(right_bad_map == 1)
+                        printf("right bad map\n");
+                    exit(1);
                 }
-                c = a - 1;
-                while(cub->map_buffer[++c] != NULL)
-                {
-                    if(cub->map_buffer[c][b] == '1' && cub->map_buffer[c + 1] == NULL)
-                        break;
-                    if(cub->map_buffer[c][b] == '1' && cub->map_buffer[c - 1][b] == ' ')
-                        break;
-                    else if(cub->map_buffer[c][b] == '0' && cub->map_buffer[c - 1][b] == ' ')
-                    {
-                        down_bad_map = 1;
-                        break;
-                    }
-                    // else if(cub->map_buffer[c][b] != '1' && cub->map_buffer[c + 1] == NULL)
-                    //     down_bad_map = 2;
-                }
-                c = b + 1;
-                while(--c >= 0)
-                {
-                    if(cub->map_buffer[a][c] == '1' && c == 0)
-                        break;
-                    else if(cub->map_buffer[a][c] == '1' && cub->map_buffer[a][c + 1] == ' ')
-                        break;
-                    else if(cub->map_buffer[a][c] == '0' && cub->map_buffer[a][c + 1] == ' ')
-                    {
-                        left_bad_map = 1;
-                        break;
-                    }
-                    // else if(cub->map_buffer[a][c] != '1' && c == 0)
-                    //     left_bad_map = 2;
-                }
-                c = b - 1;
-                while(cub->map_buffer[a][++c] != '\0')
-                {
-                    if(cub->map_buffer[a][c] == '1' && cub->map_buffer[a][c + 1] == '\n')
-                        break;
-                    else if(cub->map_buffer[a][c] == '1' && cub->map_buffer[a][c - 1] == ' ')
-                        break;
-                    else if(cub->map_buffer[a][c] == '0' && cub->map_buffer[a][c - 1] == ' ')
-                    {
-                        right_bad_map = 1;
-                        break;
-                    }
-                    // else if(cub->map_buffer[a][c] != '1' && cub->map_buffer[a][c + 1] == '\n')
-                    //     right_bad_map = 2;
-                }
-                // printf("------%d-----%d------\n",a,b);
-                // printf("up %d\n",up_bad_map);
-                // printf("down %d\n",down_bad_map);
-                // printf("right %d\n",right_bad_map);
-                // printf("left %d\n",left_bad_map);
-                // if((right_bad_map == 2 && left_bad_map == 2 && up_bad_map == 2 && down_bad_map == 0)
-                //     || (right_bad_map == 2 && left_bad_map == 2 && down_bad_map == 2 && up_bad_map == 0)
-                //     || (up_bad_map == 2 && down_bad_map == 2 && right_bad_map == 2 && left_bad_map == 0)
-                //     || (up_bad_map == 2 && down_bad_map == 2 && left_bad_map == 2 && right_bad_map == 0))
-                    // ;          
-                // else if((right_bad_map == 2 && left_bad_map == 2) || (up_bad_map == 2 && down_bad_map == 2))
-                //    break;
-                // else if((right_bad_map == 2 || left_bad_map == 2) || (up_bad_map == 2 || down_bad_map == 2))
-                //     break;
-                if((right_bad_map == 1 || left_bad_map == 1) || (up_bad_map == 1 || down_bad_map == 1))
-                   break;
             }
         }
-        // if((right_bad_map == 2 && left_bad_map == 2 && up_bad_map == 2 && down_bad_map == 0)
-        //     || (right_bad_map == 2 && left_bad_map == 2 && down_bad_map == 2 && up_bad_map == 0)
-        //     || (up_bad_map == 2 && down_bad_map == 2 && right_bad_map == 2 && left_bad_map == 0)
-        //     || (up_bad_map == 2 && down_bad_map == 2 && left_bad_map == 2 && right_bad_map == 0))
-        //     ;
-        // else if((right_bad_map == 2 && left_bad_map == 2) || (up_bad_map == 2 && down_bad_map == 2))
-        //    break;
-        // else if((right_bad_map == 2 || left_bad_map == 2) || (up_bad_map == 2 || down_bad_map == 2))
-        //     break;
-        if((right_bad_map == 1 || left_bad_map == 1) || (up_bad_map == 1 || down_bad_map == 1))
-            break;
     }
-    // if((right_bad_map == 2 && left_bad_map == 2 && up_bad_map == 2 && down_bad_map == 0)
-    //     || (right_bad_map == 2 && left_bad_map == 2 && down_bad_map == 2 && up_bad_map == 0)
-    //     || (up_bad_map == 2 && down_bad_map == 2 && right_bad_map == 2 && left_bad_map == 0)
-    //     || (up_bad_map == 2 && down_bad_map == 2 && left_bad_map == 2 && right_bad_map == 0))
-    //     printf("good map 2\n");
-    // else if((right_bad_map == 2 && left_bad_map == 2) || (up_bad_map == 2 && down_bad_map == 2))
-    //     printf("bad map\n");
-    // else if((right_bad_map == 2 || left_bad_map == 2) || (up_bad_map == 2 || down_bad_map == 2))
-    //     printf("bad map 2\n");
-    if((right_bad_map == 1 || left_bad_map == 1) || (up_bad_map == 1 || down_bad_map == 1))
-        printf("bad map\n");
-    else if((!right_bad_map || !left_bad_map) && (!up_bad_map || !down_bad_map))
-        printf("good map\n");
+
 }

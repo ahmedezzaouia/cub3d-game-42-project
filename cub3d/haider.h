@@ -58,7 +58,6 @@ char *get_texture_path(char *ptr);
 int *get_rgb_color(char *str);
 void check_map_if_valid(s_cub *cub);
 
-char	*ft_bspace(char *st, size_t len);
 // void error_bad_path(void);
 
 #endif
