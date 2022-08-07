@@ -1,13 +1,20 @@
-0                                        
-1                                        
-2                                        
-3                 111111111111 1111111111
-4                 100000000001 10000000N1
-5                 111111110111 1111111101
-6                 111    101          111
-7                        111
-8                                        
-9                        111
-10                 111    101          111
-11                 111111111111 1111111101
-12                 111111111111 1111111111good map
+Process:         cub3D [17514]
+Path:            /Volumes/VOLUME/*/cub3D
+Load Address:    0x10eaa1000
+Identifier:      cub3D
+Version:         ???
+Code Type:       X86-64
+Parent Process:  zsh [7169]
+
+Date/Time:       2022-08-06 14:45:38.368 +0100
+Launch Time:     2022-08-06 14:45:38.072 +0100
+OS Version:      Mac OS X 10.14.6 (18G103)
+Report Version:  7
+Analysis Tool:   /Applications/Xcode.app/Contents/Developer/usr/bin/leaks
+Analysis Tool Version:  Xcode 11.3.1 (11C505)
+----
+
+leaks Report Version: 4.0
+Process 17514: 187 nodes malloced for 19 KB
+Process 17514: 0 leaks for 0 total leaked bytes.
+

@@ -18,6 +18,7 @@
 # include <stdlib.h>
 # include <unistd.h>
 # include <mlx.h>
+# include <math.h>
 # include <stdbool.h>
 # include <fcntl.h>
 # include <sys/types.h>
@@ -27,6 +28,7 @@
 
 typedef struct t_list
 {
+    //part of cub
     char *north_path;
     char *south_path;
     char *west_path;
@@ -37,6 +39,23 @@ typedef struct t_list
     char *buffer;
     int *F_RGB;
     int *C_RGB;
+
+    //part of mlx
+    void    *win;
+    void    *ptr;
+    void	*img_wall;
+    void	*img_floor;
+    void    *img_empty;
+    void    *img_player;
+    int     x_pixel;
+    int     y_pixel;
+    int     px;
+    int     py;
+    int     ppx;
+    int     ppy;
+    int end_ray_x;
+    int end_ray_y;
+    double radien;
 }s_cub;
 
 void check_path_of_map_file(char *path);
@@ -57,7 +76,7 @@ char *get_texture_path(char *ptr);
 
 int *get_rgb_color(char *str);
 void check_map_if_valid(s_cub *cub);
-
-// void error_bad_path(void);
+void display_2d_map(s_cub *cub);
+void update_map(s_cub *cub);
 
 #endif

@@ -18,6 +18,7 @@ s_cub *cub_init(char **argv)
 
     cub = malloc(sizeof(s_cub));
 
+    cub->radien = -3.14159/2;
     cub->ceilling_color = NULL;
     cub->east_path = NULL;
     cub->floor_color = NULL;
@@ -31,18 +32,78 @@ s_cub *cub_init(char **argv)
     check_south_texture_path(cub);
     check_west_texture_path(cub);
     check_east_texture_path(cub);
-    // get_floor_rgb_color(cub);
     cub->F_RGB = get_rgb_color(cub->floor_color);
     cub->C_RGB =  get_rgb_color(cub->ceilling_color);
     check_map_if_valid(cub);
-
     return (cub);
 }
+int	ft_close(s_cub *cub)
+{
+	write(1, "programe exited sucsfull\n", 25);
+    mlx_destroy_window(cub->ptr,cub->win);
+	exit(0);
+	return (0);
+}
+int update(int keycode, s_cub *cub)
+{
+    if(keycode == 13 || keycode == 126)
+    {
+        cub->ppy += roundf(sin(cub->radien)*5);
+        cub->ppx += roundf(cos(cub->radien)*5);
+    }
+    if(keycode == 1 || keycode == 125)
+    {
+        cub->ppy -= roundf(sin(cub->radien)*5);
+        cub->ppx -= roundf(cos(cub->radien)*5);
+    }
+    if (keycode == 2 || keycode == 124)
+        cub->radien += 0.075;
+    if (keycode == 0 || keycode == 123)
+        cub->radien -= 0.075;
+    if(keycode == 53)
+		exit(0);
+    update_map(cub);
+    return (0);
+}
+void _mlx_init(s_cub *cub)
+{
+    int a;
+    int b;
 
+    a = -1;
+    cub->x_pixel = 0;
+    while(cub->map_buffer[++a])
+    {
+        b = -1;
+        while(cub->map_buffer[a][++b])
+        {
+            cub->y_pixel = ft_strlen(cub->map_buffer[a]);
+            if(cub->x_pixel < cub->y_pixel)
+                cub->x_pixel = cub->y_pixel;
+        }
+    }
+    cub->x_pixel *=  30;
+    cub->y_pixel = (a + 2) * 30;
+    cub->ptr = mlx_init();
+    cub->win = mlx_new_window(cub->ptr,cub->x_pixel,cub->y_pixel, "2D_map");
+    cub->img_wall = mlx_xpm_file_to_image(cub->ptr,"texture/wall.xpm",&a,&b);
+    if(!cub->img_wall)
+        printf("here\n");
+    cub->img_floor = mlx_xpm_file_to_image(cub->ptr,"texture/floor.xpm",&a,&b);
+    if(!cub->img_floor)
+        printf("here 1\n");
+    cub->img_empty = mlx_xpm_file_to_image(cub->ptr,"texture/black.xpm",&a,&b);
+    if(!cub->img_empty)
+        printf("here 2\n");
+    cub->img_player = mlx_xpm_file_to_image(cub->ptr,"texture/player.xpm",&a,&b);
+    if(!cub->img_player)
+        printf("here 3\n");
+    mlx_hook(cub->win, 2, 0L, update, cub);
+    mlx_hook(cub->win, 17, 0L, ft_close, cub);
+}
 int main (int argc,char **argv)
 {
     s_cub *cub;
-
     if(argc != 2)
     {   
         write(2,"Erorr bad number of argumment\n",30);
@@ -50,6 +111,9 @@ int main (int argc,char **argv)
     }
     check_path_of_map_file(argv[1]);
     cub = cub_init(argv);
+    _mlx_init(cub);
+    display_2d_map(cub);
+    mlx_loop(cub->ptr);
     // system("leaks cub3D");
     return(0);
 }
