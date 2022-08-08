@@ -56,6 +56,7 @@ typedef struct t_list
     int end_ray_x;
     int end_ray_y;
     double radien;
+    double ray_len[500];
 }s_cub;
 
 void check_path_of_map_file(char *path);
@@ -78,5 +79,7 @@ int *get_rgb_color(char *str);
 void check_map_if_valid(s_cub *cub);
 void display_2d_map(s_cub *cub);
 void update_map(s_cub *cub);
+
+double ft_to_radien(int degree);
 
 #endif

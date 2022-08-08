@@ -18,7 +18,7 @@ s_cub *cub_init(char **argv)
 
     cub = malloc(sizeof(s_cub));
 
-    cub->radien = -3.14159/2;
+    cub->radien = -M_PI/2;
     cub->ceilling_color = NULL;
     cub->east_path = NULL;
     cub->floor_color = NULL;
