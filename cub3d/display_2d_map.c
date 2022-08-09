@@ -12,6 +12,41 @@
 
 #include "haider.h"
 
+double ray_collision_len(s_cub *cub, double radian,int len)
+{
+    double begin_x;
+    double begin_y;
+    double deltaX;
+    double deltaY;
+    int pixels;
+    int a;
+    int b;
+
+    cub->end_ray_x = len*cos(radian) + cub->ppx;
+    cub->end_ray_y = len*sin(radian) + cub->ppy;
+    deltaX = cub->end_ray_x - cub->ppx;
+    deltaY = cub->end_ray_y - cub->ppy;
+    pixels = sqrt((deltaX*deltaX)+(deltaY*deltaY));
+    deltaX /= pixels;
+    deltaY /= pixels;
+    begin_x =cub->ppx+5;
+    begin_y =cub->ppy+5;
+    while(pixels--)
+    {
+        a = round(((begin_y-15)/30)-1);
+        b = round(((begin_x-15)/30)-1);
+        if((a > -1 && a < 14) && (b > -1 && b<33))
+        {
+            if(cub->map_buffer[a][b] == '1')
+                return(sqrt(pow((cub->ppy-round(begin_y)),2)
+                        + pow(cub->ppx-round(begin_x),2)));
+        }
+        mlx_pixel_put(cub->ptr,cub->win,begin_x,begin_y,0xff0000);
+        begin_x += deltaX;
+        begin_y += deltaY;
+    }
+  return(240);
+}
 void draw_line(s_cub *cub,double radien,int len)
 {
     double begin_x;
@@ -40,22 +75,21 @@ void draw_line(s_cub *cub,double radien,int len)
         {
             if(cub->map_buffer[a][b] == '1') //for stop if hit wall
             {   //for save line_len
+                if(c == 500)
+                     c = -1;
                 if(radien < -M_PI/2)
                     cub->ray_len[++c] = sqrt(pow((cub->ppy-round(begin_y)),2)
                         + pow(cub->ppx-round(begin_x),2))*cos(-radien+(cub->radien));
                 else
                     cub->ray_len[++c] = sqrt(pow((cub->ppy-round(begin_y)),2)
                         + pow(cub->ppx-round(begin_x),2))*cos(radien-(cub->radien));
-                // printf("%f\n",cub->ray_len[c]);
                 break;
             }
         }
-        mlx_pixel_put(cub->ptr,cub->win,begin_x,begin_y,16777215);
+            mlx_pixel_put(cub->ptr,cub->win,begin_x,begin_y,16777215);
         begin_x += deltaX;
         begin_y += deltaY;
     }
-    if(c == 500)
-        c = -1;
 }
 
 void update_map(s_cub *cub)
@@ -92,7 +126,9 @@ void update_map(s_cub *cub)
         draw_line(cub,min_raduis,5000);
         min_raduis += 0.00230383461; //for 1 ray evry loop
     }
-    draw_line(cub,cub->radien,60);
+    cub->up_len = ray_collision_len(cub,cub->radien,500);
+    cub->down_len = ray_collision_len(cub,cub->rev_radien,500);
+    printf("%f %f\n",cub->up_len,cub->down_len);
     mlx_put_image_to_window(cub->ptr,cub->win,cub->img_player,cub->ppx,cub->ppy);
 }
 
@@ -124,7 +160,6 @@ void display_2d_map(s_cub *cub)
                 cub->ppy = y+10;
                 cub->px = x/30;
                 cub->py = (y/30) - 2;
-                draw_line(cub,cub->radien,60);
                 mlx_put_image_to_window(cub->ptr,cub->win,cub->img_floor,x,y);
                 mlx_put_image_to_window(cub->ptr,cub->win,cub->img_player,x+10,y+10);
             }

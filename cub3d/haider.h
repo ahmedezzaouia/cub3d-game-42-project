@@ -47,6 +47,8 @@ typedef struct t_list
     void	*img_floor;
     void    *img_empty;
     void    *img_player;
+    int     a_buf;
+    int     b_buf;
     int     x_pixel;
     int     y_pixel;
     int     px;
@@ -55,15 +57,27 @@ typedef struct t_list
     int     ppy;
     void    *win_cub3d;
     void    *img_black_screen;
+    void    *img_of_screen;
     int end_ray_x;
     int end_ray_y;
     double radien;
+    double rev_radien;
     int ray_pixels;
     int celing_px;
     int wall_px;
     int floor_px;
     double ray_len[500];
+    double up_len;
+    double down_len;
 }s_cub;
+
+typedef struct t_img
+{
+    char *addr;
+    int line_len;
+    int bpp;
+    int endien;
+}s_img;
 
 void check_path_of_map_file(char *path);
 int ft_strlen(char *str);

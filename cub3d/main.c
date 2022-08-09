@@ -19,6 +19,7 @@ s_cub *cub_init(char **argv)
     cub = malloc(sizeof(s_cub));
 
     cub->radien = -M_PI/2;
+    cub->rev_radien = M_PI/2;
     cub->ceilling_color = NULL;
     cub->east_path = NULL;
     cub->floor_color = NULL;
@@ -47,20 +48,26 @@ int	ft_close(s_cub *cub)
 }
 int update(int keycode, s_cub *cub)
 {
-    if((keycode == 13 || keycode == 126) && cub->ray_len[249] > 10)
+    if((keycode == 13 || keycode == 126) && cub->up_len > 10)
     {
         cub->ppy += roundf(sin(cub->radien)*5);
         cub->ppx += roundf(cos(cub->radien)*5);
     }
-    if((keycode == 1 || keycode == 125))
+    if((keycode == 1 || keycode == 125) && cub->down_len > 15)
     {
         cub->ppy -= roundf(sin(cub->radien)*5);
         cub->ppx -= roundf(cos(cub->radien)*5);
     }
     if (keycode == 2 || keycode == 124)
+    {
         cub->radien += 0.075;
+        cub->rev_radien += 0.075;
+    }
     if (keycode == 0 || keycode == 123)
+    {
         cub->radien -= 0.075;
+        cub->rev_radien -= 0.075;
+    }
     if(keycode == 53)
 		exit(0);
     update_map(cub);
@@ -71,21 +78,21 @@ void _mlx_init(s_cub *cub)
 {
     int a;
     int b;
-
-    a = -1;
+    
+    cub->a_buf = -1;
     cub->x_pixel = 0;
-    while(cub->map_buffer[++a])
+    while(cub->map_buffer[++cub->a_buf])
     {
-        b = -1;
-        while(cub->map_buffer[a][++b])
+        cub->b_buf = -1;
+        while(cub->map_buffer[cub->a_buf][++cub->b_buf])
         {
-            cub->y_pixel = ft_strlen(cub->map_buffer[a]);
+            cub->y_pixel = ft_strlen(cub->map_buffer[cub->a_buf]);
             if(cub->x_pixel < cub->y_pixel)
                 cub->x_pixel = cub->y_pixel;
         }
     }
     cub->x_pixel *=  30;
-    cub->y_pixel = (a + 2) * 30;
+    cub->y_pixel = (cub->a_buf + 2) * 30;
     cub->ptr = mlx_init();
     cub->win = mlx_new_window(cub->ptr,cub->x_pixel,cub->y_pixel, "2D_map");
     cub->img_wall = mlx_xpm_file_to_image(cub->ptr,"texture/wall.xpm",&a,&b);
@@ -100,8 +107,8 @@ void _mlx_init(s_cub *cub)
     cub->img_player = mlx_xpm_file_to_image(cub->ptr,"texture/player.xpm",&a,&b);
     if(!cub->img_player)
         printf("here 3\n");
-    cub->img_black_screen = mlx_xpm_file_to_image(cub->ptr,"texture/black_screen.xpm",&a,&b);
-    if(!cub->img_empty)
+    cub->img_black_screen = mlx_xpm_file_to_image(cub->ptr,"texture/big_black_screen.xpm",&a,&b);
+    if(!cub->img_black_screen)
         printf("here 4\n");
     mlx_hook(cub->win, 2, 0L, update, cub);
     mlx_hook(cub->win, 17, 0L, ft_close, cub);
