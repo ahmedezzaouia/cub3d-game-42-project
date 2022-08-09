@@ -40,7 +40,13 @@ void draw_line(s_cub *cub,double radien,int len)
         {
             if(cub->map_buffer[a][b] == '1') //for stop if hit wall
             {   //for save line_len
-                cub->ray_len[++c] = sqrt(pow((cub->ppy-round(begin_y)),2) + pow(cub->ppx-round(begin_x),2));
+                if(radien < -M_PI/2)
+                    cub->ray_len[++c] = sqrt(pow((cub->ppy-round(begin_y)),2)
+                        + pow(cub->ppx-round(begin_x),2))*cos(-radien+(cub->radien));
+                else
+                    cub->ray_len[++c] = sqrt(pow((cub->ppy-round(begin_y)),2)
+                        + pow(cub->ppx-round(begin_x),2))*cos(radien-(cub->radien));
+                // printf("%f\n",cub->ray_len[c]);
                 break;
             }
         }

@@ -27,6 +27,7 @@ s_cub *cub_init(char **argv)
     cub->south_path = NULL;
     cub->west_path = NULL;
     cub->buffer = NULL;
+    cub->win_cub3d = NULL;
     get_buff_of_map(cub, argv[1]);
     check_north_texture_path(cub);
     check_south_texture_path(cub);
@@ -46,12 +47,12 @@ int	ft_close(s_cub *cub)
 }
 int update(int keycode, s_cub *cub)
 {
-    if(keycode == 13 || keycode == 126)
+    if((keycode == 13 || keycode == 126) && cub->ray_len[249] > 10)
     {
         cub->ppy += roundf(sin(cub->radien)*5);
         cub->ppx += roundf(cos(cub->radien)*5);
     }
-    if(keycode == 1 || keycode == 125)
+    if((keycode == 1 || keycode == 125))
     {
         cub->ppy -= roundf(sin(cub->radien)*5);
         cub->ppx -= roundf(cos(cub->radien)*5);
@@ -63,6 +64,7 @@ int update(int keycode, s_cub *cub)
     if(keycode == 53)
 		exit(0);
     update_map(cub);
+    engin(cub);
     return (0);
 }
 void _mlx_init(s_cub *cub)
@@ -98,6 +100,9 @@ void _mlx_init(s_cub *cub)
     cub->img_player = mlx_xpm_file_to_image(cub->ptr,"texture/player.xpm",&a,&b);
     if(!cub->img_player)
         printf("here 3\n");
+    cub->img_black_screen = mlx_xpm_file_to_image(cub->ptr,"texture/black_screen.xpm",&a,&b);
+    if(!cub->img_empty)
+        printf("here 4\n");
     mlx_hook(cub->win, 2, 0L, update, cub);
     mlx_hook(cub->win, 17, 0L, ft_close, cub);
 }
