@@ -50,7 +50,7 @@ void wall_part(s_cub *cub,s_img *img,int a)
     while(++loop < cub->wall_px)
     {
         ++cub->ray_pixels;
-        img_pixel_put(img,a,cub->ray_pixels,0x3C0EA0);
+        img_pixel_put(img,a,cub->ray_pixels,cub->color_of_wall[a/3]);
     }
 }
 void floor_part(s_cub *cub,s_img *img,int a)
@@ -74,6 +74,7 @@ void engin(s_cub *cub)
     img.addr = mlx_get_data_addr(cub->img_of_screen,&img.bpp,&img.line_len,&img.endien);
     mlx_put_image_to_window(cub->ptr,cub->win_cub3d,cub->img_black_screen,0,0);
     a  =-1;
+    // printf("here1\n");
     while(++a < 1500)
     {
         cub->ray_pixels = -1;
@@ -81,5 +82,6 @@ void engin(s_cub *cub)
         wall_part(cub,&img,a);
         floor_part(cub,&img,a);
     }
+    // printf("here2\n");
     mlx_put_image_to_window(cub->ptr,cub->win_cub3d,cub->img_of_screen,0,0);
 }

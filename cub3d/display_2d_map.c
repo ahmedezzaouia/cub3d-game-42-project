@@ -57,7 +57,9 @@ void draw_line(s_cub *cub,double radien,int len)
     int a;
     int b;
     static int c = -1;
+    int d;
 
+    d = 150;
     cub->end_ray_x = len*cos(radien) + cub->ppx;
     cub->end_ray_y = len*sin(radien) + cub->ppy;
     deltaX = cub->end_ray_x - cub->ppx;
@@ -83,10 +85,30 @@ void draw_line(s_cub *cub,double radien,int len)
                 else
                     cub->ray_len[++c] = sqrt(pow((cub->ppy-round(begin_y)),2)
                         + pow(cub->ppx-round(begin_x),2))*cos(radien-(cub->radien));
+                if(cub->ray_len[c] < 10)
+                    cub->ray_len[c] = 10;
+                if(((int)(begin_y)+1) % 30 == 0 && begin_y < cub->ppy+5)
+                    cub->color_of_wall[c] = 16777215;//wghite
+                else if((int)(begin_y) % 30 == 0 && begin_y > cub->ppy+5)
+                    cub->color_of_wall[c] = 11997714;//red
+                else if (((int)(begin_x)+1) % 30 == 0 && begin_x < cub->ppx+5)
+                    cub->color_of_wall[c] = 8654765;//ghozi
+                else if ((int)(begin_x) % 30 == 0 && begin_x > cub->ppx+5)
+                    cub->color_of_wall[c] = 1012909;//blue
                 break;
             }
         }
-            mlx_pixel_put(cub->ptr,cub->win,begin_x,begin_y,16777215);
+        // if(d-- > 0)
+        // {
+            if((int)(begin_y) % 30 == 0 && begin_y < cub->ppy+5)
+                mlx_pixel_put(cub->ptr,cub->win,begin_x,begin_y,16777215);
+            else if((int)(begin_y) % 30 == 0 && begin_y > cub->ppy+5)
+                mlx_pixel_put(cub->ptr,cub->win,begin_x,begin_y,0xb71212);
+            else if ((int)(begin_x) % 30 == 0 && begin_x < cub->ppx+5)
+                mlx_pixel_put(cub->ptr,cub->win,begin_x,begin_y,0x840fad);
+            else if ((int)(begin_x) % 30 == 0 && begin_x > cub->ppx+5)
+                mlx_pixel_put(cub->ptr,cub->win,begin_x,begin_y,0x0f74ad);
+        // }
         begin_x += deltaX;
         begin_y += deltaY;
     }
@@ -126,9 +148,12 @@ void update_map(s_cub *cub)
         draw_line(cub,min_raduis,5000);
         min_raduis += 0.00230383461; //for 1 ray evry loop
     }
-    cub->up_len = ray_collision_len(cub,cub->radien,500);
-    cub->down_len = ray_collision_len(cub,cub->rev_radien,500);
-    printf("%f %f\n",cub->up_len,cub->down_len);
+    cub->up_len = ray_collision_len(cub,cub->radien,25);
+    if(cub->up_len < 10)
+        cub->up_len = 10;
+    cub->down_len = ray_collision_len(cub,cub->rev_radien,25);
+    if(cub->down_len < 10)
+        cub->down_len = 10;
     mlx_put_image_to_window(cub->ptr,cub->win,cub->img_player,cub->ppx,cub->ppy);
 }
 

@@ -48,7 +48,7 @@ int	ft_close(s_cub *cub)
 }
 int update(int keycode, s_cub *cub)
 {
-    if((keycode == 13 || keycode == 126) && cub->up_len > 10)
+    if((keycode == 13 || keycode == 126) && cub->up_len > 15)
     {
         cub->ppy += roundf(sin(cub->radien)*5);
         cub->ppx += roundf(cos(cub->radien)*5);

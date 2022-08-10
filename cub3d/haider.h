@@ -67,6 +67,7 @@ typedef struct t_list
     int wall_px;
     int floor_px;
     double ray_len[500];
+    int     color_of_wall[500];
     double up_len;
     double down_len;
 }s_cub;
