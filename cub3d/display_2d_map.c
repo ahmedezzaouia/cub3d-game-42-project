@@ -87,10 +87,16 @@ void draw_line(s_cub *cub,double radien,int len)
                         + pow(cub->ppx-round(begin_x),2))*cos(radien-(cub->radien));
                 if(cub->ray_len[c] < 10)
                     cub->ray_len[c] = 10;
-                if(((int)(begin_y)+1) % 30 == 0 && begin_y < cub->ppy+5)
+                if(((int)(begin_y)+1) % 30 == 0 && ((int)(begin_x)) % 30 != 0
+                    && ((int)(begin_x)+1) % 30 != 0 && begin_y < cub->ppy+5)
                     cub->color_of_wall[c] = 16777215;//wghite
-                else if((int)(begin_y) % 30 == 0 && begin_y > cub->ppy+5)
+                else if(((int)(begin_y)+1) % 30 == 0 && cub->color_of_wall[c-1] == 16777215)
+                    cub->color_of_wall[c] = 16777215;
+                else if((int)(begin_y) % 30 == 0 && ((int)(begin_x)) % 30 != 0
+                    && ((int)(begin_x)+1) % 30 != 0 && begin_y > cub->ppy+5)
                     cub->color_of_wall[c] = 11997714;//red
+                else if((int)(begin_y) % 30 == 0 && cub->color_of_wall[c-1] == 11997714)
+                    cub->color_of_wall[c] = 11997714;
                 else if (((int)(begin_x)+1) % 30 == 0 && begin_x < cub->ppx+5)
                     cub->color_of_wall[c] = 8654765;//ghozi
                 else if ((int)(begin_x) % 30 == 0 && begin_x > cub->ppx+5)
@@ -98,17 +104,17 @@ void draw_line(s_cub *cub,double radien,int len)
                 break;
             }
         }
-        // if(d-- > 0)
-        // {
-            if((int)(begin_y) % 30 == 0 && begin_y < cub->ppy+5)
+        if(d-- > 0)
+        {
+            // if((int)(begin_y) % 30 == 0 && begin_y < cub->ppy+5)
                 mlx_pixel_put(cub->ptr,cub->win,begin_x,begin_y,16777215);
-            else if((int)(begin_y) % 30 == 0 && begin_y > cub->ppy+5)
-                mlx_pixel_put(cub->ptr,cub->win,begin_x,begin_y,0xb71212);
-            else if ((int)(begin_x) % 30 == 0 && begin_x < cub->ppx+5)
-                mlx_pixel_put(cub->ptr,cub->win,begin_x,begin_y,0x840fad);
-            else if ((int)(begin_x) % 30 == 0 && begin_x > cub->ppx+5)
-                mlx_pixel_put(cub->ptr,cub->win,begin_x,begin_y,0x0f74ad);
-        // }
+            // else if((int)(begin_y) % 30 == 0 && begin_y > cub->ppy+5)
+            //     mlx_pixel_put(cub->ptr,cub->win,begin_x,begin_y,0xb71212);
+            // else if ((int)(begin_x) % 30 == 0 && begin_x < cub->ppx+5)
+            //     mlx_pixel_put(cub->ptr,cub->win,begin_x,begin_y,0x840fad);
+            // else if ((int)(begin_x) % 30 == 0 && begin_x > cub->ppx+5)
+            //     mlx_pixel_put(cub->ptr,cub->win,begin_x,begin_y,0x0f74ad);
+        }
         begin_x += deltaX;
         begin_y += deltaY;
     }
