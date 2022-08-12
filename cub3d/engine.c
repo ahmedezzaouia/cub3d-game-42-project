@@ -14,15 +14,20 @@
 #include "haider.h"
 
 
-// void img_pixel_put(s_img *img,int x, int y, int color)
-// {
-//     int  index;
+void txt_img_pixel_put(s_img *walls_txt,s_img *img,int x, int y,int txt_x,int txt_y)
+{
+    int     txt_index;
+    int     index;
 
-//     // printf("here\n");
-//     index = (y * img->line_len + x * (img->bpp / 8));
-//     // printf("%d\n",index);
-// 	img->addr[index] = color;
-// }
+    (void) txt_x;
+    (void) txt_y;
+    txt_index = (txt_y * walls_txt->line_len + txt_x * (walls_txt->bpp / 8));
+    index = (y * img->line_len + x * (img->bpp / 8));
+    img->addr[index] = 0;
+	img->addr[index] = (int)walls_txt->addr[txt_index];
+    img->addr[index+1] = (int)walls_txt->addr[txt_index+1];
+    img->addr[index+2] = (int)walls_txt->addr[txt_index+2];
+}
 void	img_pixel_put(s_img *img, int x, int y, int color)
 {
 	char    *pixel;
@@ -42,15 +47,42 @@ void celing_part(s_cub *cub,s_img *img,int a)
 }
 void wall_part(s_cub *cub,s_img *img,int a)
 {
+    s_img walls_txt;
     int loop;
-
-    loop = -1;
+    float ppl;
+    int txt_x;
+    int txt_y;
+    int y;
     (void) cub;
     (void) img;
+    loop = -1;
+    y = -1;
+    ppl = cub->wall_px/64.0;
+    walls_txt.addr = mlx_get_data_addr(cub->north_wall,&walls_txt.bpp,&walls_txt.line_len,&walls_txt.endien);
     while(++loop < cub->wall_px)
     {
         ++cub->ray_pixels;
-        img_pixel_put(img,a,cub->ray_pixels,cub->color_of_wall[a/3]);
+        if(cub->color_of_wall[a/3] == 16777215)
+        {
+            ++y;
+            if(ppl >= 1)
+            {
+                txt_y = y/ppl;
+                txt_x = a/ppl;
+            }
+            else if(ppl < 1)
+            {
+                txt_y = y*(1/ppl);
+                txt_x = a*(1/ppl);
+            }
+            if(a/3 == 250)
+                printf("wall len %d ppl %f y%d\n",cub->wall_px,ppl,txt_y);
+            if(txt_y > 63 && txt_x > 64)
+                break;
+            txt_img_pixel_put(&walls_txt,img,a,cub->ray_pixels,txt_x%64,txt_y);
+        }
+        else
+            img_pixel_put(img,a,cub->ray_pixels,cub->color_of_wall[a/3]);
     }
 }
 void floor_part(s_cub *cub,s_img *img,int a)

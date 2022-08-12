@@ -59,7 +59,7 @@ void draw_line(s_cub *cub,double radien,int len)
     static int c = -1;
     int d;
 
-    d = 150;
+    d = 75;
     cub->end_ray_x = len*cos(radien) + cub->ppx;
     cub->end_ray_y = len*sin(radien) + cub->ppy;
     deltaX = cub->end_ray_x - cub->ppx;

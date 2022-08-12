@@ -58,6 +58,7 @@ typedef struct t_list
     void    *win_cub3d;
     void    *img_black_screen;
     void    *img_of_screen;
+    void    *north_wall;
     int end_ray_x;
     int end_ray_y;
     double radien;

@@ -110,6 +110,9 @@ void _mlx_init(s_cub *cub)
     cub->img_black_screen = mlx_xpm_file_to_image(cub->ptr,"texture/big_black_screen.xpm",&a,&b);
     if(!cub->img_black_screen)
         printf("here 4\n");
+    cub->north_wall = mlx_xpm_file_to_image(cub->ptr,"texture/mabdelou-30px.xpm",&a,&b);
+    if(!cub->north_wall)
+        printf("here 5\n");
     mlx_hook(cub->win, 2, 0L, update, cub);
     mlx_hook(cub->win, 17, 0L, ft_close, cub);
 }
