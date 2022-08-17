@@ -47,6 +47,7 @@ double ray_collision_len(s_cub *cub, double radian,int len)
     }
   return(240);
 }
+
 void draw_line(s_cub *cub,double radien,int len)
 {
     double begin_x;
@@ -78,7 +79,8 @@ void draw_line(s_cub *cub,double radien,int len)
             if(cub->map_buffer[a][b] == '1') //for stop if hit wall
             {   //for save line_len
                 if(c == 500)
-                     c = -1;
+                    c = -1;
+                //for save raylen
                 if(radien < -M_PI/2)
                     cub->ray_len[++c] = sqrt(pow((cub->ppy-round(begin_y)),2)
                         + pow(cub->ppx-round(begin_x),2))*cos(-radien+(cub->radien));
@@ -86,6 +88,7 @@ void draw_line(s_cub *cub,double radien,int len)
                     cub->ray_len[++c] = sqrt(pow((cub->ppy-round(begin_y)),2)
                         + pow(cub->ppx-round(begin_x),2))*cos(radien-(cub->radien));
                 if(cub->ray_len[c] < 10)
+                //for save color of wall (wall's collision)
                     cub->ray_len[c] = 10;
                 if(((int)(begin_y)+1) % 30 == 0 && ((int)(begin_x)) % 30 != 0
                     && ((int)(begin_x)+1) % 30 != 0 && begin_y < cub->ppy+5)
@@ -101,20 +104,27 @@ void draw_line(s_cub *cub,double radien,int len)
                     cub->color_of_wall[c] = 8654765;//ghozi
                 else if ((int)(begin_x) % 30 == 0 && begin_x > cub->ppx+5)
                     cub->color_of_wall[c] = 1012909;//blue
+                //for add black lines evry one(1) block
+                if((((int)(begin_y)+1) % 30 == 0 && ((int)(begin_x)+1) % 30 == 0)
+                    || ((int)(begin_y) % 30 == 0 && (int)(begin_x) % 30 == 0)
+                    || (((int)(begin_y)+1) % 30 == 0 && (int)(begin_x) % 30 == 0)
+                    || ((int)(begin_y) % 30 == 0 && ((int)(begin_x)+1) % 30 == 0))
+                    cub->color_of_wall[c] = 0;
+                //for wall's width len
                 break;
             }
         }
-        if(d-- > 0)
-        {
-            // if((int)(begin_y) % 30 == 0 && begin_y < cub->ppy+5)
+        // if(d-- > 0)
+        // {
+            if((int)(begin_y) % 30 == 0 && begin_y < cub->ppy+5)
                 mlx_pixel_put(cub->ptr,cub->win,begin_x,begin_y,16777215);
-            // else if((int)(begin_y) % 30 == 0 && begin_y > cub->ppy+5)
-            //     mlx_pixel_put(cub->ptr,cub->win,begin_x,begin_y,0xb71212);
-            // else if ((int)(begin_x) % 30 == 0 && begin_x < cub->ppx+5)
-            //     mlx_pixel_put(cub->ptr,cub->win,begin_x,begin_y,0x840fad);
-            // else if ((int)(begin_x) % 30 == 0 && begin_x > cub->ppx+5)
-            //     mlx_pixel_put(cub->ptr,cub->win,begin_x,begin_y,0x0f74ad);
-        }
+            else if((int)(begin_y) % 30 == 0 && begin_y > cub->ppy+5)
+                mlx_pixel_put(cub->ptr,cub->win,begin_x,begin_y,0xb71212);
+            else if ((int)(begin_x) % 30 == 0 && begin_x < cub->ppx+5)
+                mlx_pixel_put(cub->ptr,cub->win,begin_x,begin_y,0x840fad);
+            else if ((int)(begin_x) % 30 == 0 && begin_x > cub->ppx+5)
+                mlx_pixel_put(cub->ptr,cub->win,begin_x,begin_y,0x0f74ad);
+        // }
         begin_x += deltaX;
         begin_y += deltaY;
     }

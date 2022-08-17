@@ -59,6 +59,9 @@ typedef struct t_list
     void    *img_black_screen;
     void    *img_of_screen;
     void    *north_wall;
+    void    *south_wall;
+    void    *west_wall;
+    void    *east_wall;
     int end_ray_x;
     int end_ray_y;
     double radien;
@@ -69,6 +72,7 @@ typedef struct t_list
     int floor_px;
     double ray_len[500];
     int     color_of_wall[500];
+    int     wall_width[100];
     double up_len;
     double down_len;
 }s_cub;
@@ -101,6 +105,7 @@ int *get_rgb_color(char *str);
 void check_map_if_valid(s_cub *cub);
 void display_2d_map(s_cub *cub);
 void update_map(s_cub *cub);
+void ft_calc_width_walls(s_cub *cub);
 void engin(s_cub *cub);
 double ft_to_radien(int degree);
 

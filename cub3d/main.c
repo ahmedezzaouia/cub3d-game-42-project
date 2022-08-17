@@ -17,7 +17,6 @@ s_cub *cub_init(char **argv)
     s_cub *cub;
 
     cub = malloc(sizeof(s_cub));
-
     cub->radien = -M_PI/2;
     cub->rev_radien = M_PI/2;
     cub->ceilling_color = NULL;
@@ -71,6 +70,7 @@ int update(int keycode, s_cub *cub)
     if(keycode == 53)
 		exit(0);
     update_map(cub);
+    ft_calc_width_walls(cub);
     engin(cub);
     return (0);
 }
@@ -113,6 +113,15 @@ void _mlx_init(s_cub *cub)
     cub->north_wall = mlx_xpm_file_to_image(cub->ptr,"texture/mabdelou-30px.xpm",&a,&b);
     if(!cub->north_wall)
         printf("here 5\n");
+    cub->south_wall = mlx_xpm_file_to_image(cub->ptr,"texture/small_ael-hayy_1.xpm",&a,&b);
+    if(!cub->south_wall)
+        printf("here 6\n");
+    cub->west_wall = mlx_xpm_file_to_image(cub->ptr,"texture/small_mamellal_1.xpm",&a,&b);
+    if(!cub->west_wall)
+        printf("here 7\n");
+    cub->east_wall = mlx_xpm_file_to_image(cub->ptr,"texture/small_oouazize_1.xpm",&a,&b);
+    if(!cub->east_wall)
+        printf("here 8\n");
     mlx_hook(cub->win, 2, 0L, update, cub);
     mlx_hook(cub->win, 17, 0L, ft_close, cub);
 }
