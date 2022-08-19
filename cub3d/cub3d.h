@@ -109,5 +109,7 @@ void	display_2d_map(s_cub *cub);
 void	update_map(s_cub *cub);
 void	ft_calc_width_walls(s_cub *cub, int a, int b);
 void	engin(s_cub *cub);
+int	update(int keycode, s_cub *cub);
+int	ft_close(s_cub *cub);
 
 #endif

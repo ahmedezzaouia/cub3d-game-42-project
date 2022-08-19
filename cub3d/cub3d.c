@@ -38,6 +38,8 @@ int main (int argc,char **argv)
 	check_map_if_valid(cub);
 	_mlx_init(cub);
 	display_2d_map(cub);
+	mlx_hook(cub->win_cub3d, 2, 0L, update, cub);
+	mlx_hook(cub->win_cub3d, 17, 0L, ft_close, cub);
 	mlx_loop(cub->ptr);
 	return(0);
 }

@@ -11,14 +11,15 @@ void lst1_init(s_cub *cub,s_ray *lst1)
 
 void update_map_2(s_cub *cub,s_ray *lst1)
 {
-    if(cub->map_buffer[lst1->a][lst1->b] == '1')
-        mlx_put_image_to_window(cub->ptr,cub->win,cub->img_wall,lst1->x,lst1->y);
-    else if(cub->map_buffer[lst1->a][lst1->b] == '0')
-        mlx_put_image_to_window(cub->ptr,cub->win,cub->img_floor,lst1->x,lst1->y);
-    else if(cub->map_buffer[lst1->a][lst1->b] == ' ')
-        mlx_put_image_to_window(cub->ptr,cub->win,cub->img_empty,lst1->x,lst1->y);
-    else if(cub->map_buffer[lst1->a][lst1->b] == 'N')
-        mlx_put_image_to_window(cub->ptr,cub->win,cub->img_floor,lst1->x,lst1->y);
+    (void) cub;
+    // if(cub->map_buffer[lst1->a][lst1->b] == '1')
+    //     mlx_put_image_to_window(cub->ptr,cub->win,cub->img_wall,lst1->x,lst1->y);
+    // else if(cub->map_buffer[lst1->a][lst1->b] == '0')
+    //     mlx_put_image_to_window(cub->ptr,cub->win,cub->img_floor,lst1->x,lst1->y);
+    // else if(cub->map_buffer[lst1->a][lst1->b] == ' ')
+    //     mlx_put_image_to_window(cub->ptr,cub->win,cub->img_empty,lst1->x,lst1->y);
+    // else if(cub->map_buffer[lst1->a][lst1->b] == 'N')
+    //     mlx_put_image_to_window(cub->ptr,cub->win,cub->img_floor,lst1->x,lst1->y);
     lst1->x += 30;
 }
 
@@ -46,5 +47,5 @@ void update_map(s_cub *cub)
     cub->down_len = ray_collision_len(cub,cub->rev_radien,25);
     if(cub->down_len < 10)
         cub->down_len = 10;
-    mlx_put_image_to_window(cub->ptr,cub->win,cub->img_player,cub->ppx,cub->ppy);
+    // mlx_put_image_to_window(cub->ptr,cub->win,cub->img_player,cub->ppx,cub->ppy);
 }

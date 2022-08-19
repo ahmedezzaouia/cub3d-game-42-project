@@ -33,8 +33,8 @@ void draw_line(s_cub *cub,double radien,int len)
                 break;
             }
         }
-        if(lst.d-- > 0)
-            mlx_pixel_put(cub->ptr,cub->win,lst.begin_x,lst.begin_y,16777215);
+        // if(lst.d-- > 0)
+        //     mlx_pixel_put(cub->ptr,cub->win,lst.begin_x,lst.begin_y,16777215);
         lst.begin_x += lst.deltaX;
         lst.begin_y += lst.deltaY;
     }
