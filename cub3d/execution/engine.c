@@ -11,7 +11,7 @@
 /* ************************************************************************** */
 
 
-#include "haider.h"
+#include "../cub3d.h"
 
 
 void txt_img_pixel_put(s_cub *cub,s_img *img,int x, int y,int txt_x,int txt_y)
@@ -128,7 +128,7 @@ void wall_part(s_cub *cub,s_img *img,int a,int b,float w_ppl)
                 txt_x = b*(1/w_ppl);
             // if(a/3 == 250)
                 // printf("wall len %d ppl %f y%d\n",cub->wall_px,ppl,txt_y);
-            if(txt_y > 63 /*|| txt_x > 63*/)
+            if(txt_y > 63 || txt_x > 63)
                 break;
             if(cub->color_of_wall[a/3] == 16777215)
                 txt_img_pixel_put(cub,img,a,cub->ray_pixels,txt_x,txt_y);
@@ -164,6 +164,8 @@ void engin(s_cub *cub)
     {
         cub->win_cub3d = mlx_new_window(cub->ptr,1500,900, "Cub3D");
         cub->img_of_screen = mlx_new_image(cub->ptr,1500,900);
+        if(!cub->img_of_screen)
+            ft_error("can't make img_of_screen");
     }
     img.addr = mlx_get_data_addr(cub->img_of_screen,&img.bpp,&img.line_len,&img.endien);
     mlx_put_image_to_window(cub->ptr,cub->win_cub3d,cub->img_black_screen,0,0);

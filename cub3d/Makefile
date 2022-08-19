@@ -10,7 +10,7 @@
 #                                                                              #
 # **************************************************************************** #
 
-CC = cc -Wall -Wextra -Werror -lmlx -framework OpenGL -framework AppKit
+CC = cc -g -fsanitize=address -Wall -Wextra -Werror -lmlx -framework OpenGL -framework AppKit
 
 RM = rm -f
 NAME = cub3D

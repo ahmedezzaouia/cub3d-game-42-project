@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "haider.h"
+#include "../cub3d.h"
 
 void check_north_texture_path(s_cub *cub)
 {  

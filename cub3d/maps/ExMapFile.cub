@@ -1,7 +1,7 @@
-NO ./path_to_the_north_texture
-SO ./path_to_the_south_texture
-WE ./path_to_the_west_texture
-EA ./path_to_the_east_texture
+NO ./texture/small_ael-hayy_1
+SO ./texture/small_mamellal_1
+WE ./texture/small_oouazize_1
+EA ./texture/mabdelou-30px
 
 F 220,100,0
 C 225,30,0

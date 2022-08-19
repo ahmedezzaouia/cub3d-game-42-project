@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "haider.h"
+#include "../cub3d.h"
 
 char *get_texture_path(char *ptr)
 {

@@ -10,29 +10,13 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "haider.h"
+#include "../cub3d.h"
 
-int *get_rgb_color(char *str)
+int *get_rgb_color_2(char *str, int *num)
 {
     int a;
     int b;
-    int *num;
 
-    if(!str)
-    {
-        write(2,"there is no element_color \n",27);
-        exit(1);
-    }
-    num = malloc(sizeof(int) * 3);
-    if(!num)
-    if(!num)
-    {
-        write(2,"Erorr : can't allocated\n",24);
-        exit(1);
-    }
-    num[0] = 0;
-    num[1] = 0;
-    num[2] = 0;
     a = 1;
     b = 0;
     while(str[++a])
@@ -49,5 +33,26 @@ int *get_rgb_color(char *str)
             num[b] *= 10;
         }
     }
+    return (num);
+}
+int *get_rgb_color(char *str)
+{
+    int *num;
+
+    if(!str)
+    {
+        write(2,"there is no element_color \n",27);
+        exit(1);
+    }
+    num = malloc(sizeof(int) * 3);
+    if(!num)
+    {
+        write(2,"Erorr : can't allocated\n",24);
+        exit(1);
+    }
+    num[0] = 0;
+    num[1] = 0;
+    num[2] = 0;
+    num = get_rgb_color_2(str,num);
     return (num);
 }
