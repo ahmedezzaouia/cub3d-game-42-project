@@ -1,7 +1,7 @@
 #include "../cub3d.h"
 #include "execution.h"
 
-void lst_init1(s_cub *cub, s_line *lst, double radien, int len)
+void lst_init(s_cub *cub, s_line *lst, double radien, int len)
 {
     cub->end_ray_x = len*cos(radien) + cub->ppx;
     cub->end_ray_y = len*sin(radien) + cub->ppy;
@@ -16,11 +16,11 @@ void lst_init1(s_cub *cub, s_line *lst, double radien, int len)
     lst->b = -1;
     lst->d = 75;
 }
-void ray_collision(s_cub *cub,double radien,int len)
+void rays_collision(s_cub *cub,double radien,int len)
 {
     s_line lst;
 
-    lst_init1(cub,&lst,radien,len);
+    lst_init(cub,&lst,radien,len);
     while(lst.pixels--)
     {
         lst.a = round(((lst.begin_y-15)/30)-1);
@@ -33,9 +33,6 @@ void ray_collision(s_cub *cub,double radien,int len)
                 break;
             }
         }
-        if(lst.d-- > 0)
-            mlx_pixel_put(cub->ptr,cub->win_cub3d,lst.begin_x,lst.begin_y,16777215);
-        mlx_pixel_put(cub->ptr,cub->win_cub3d,lst.begin_x,lst.begin_y,0x331A66);
         lst.begin_x += lst.deltaX;
         lst.begin_y += lst.deltaY;
     }

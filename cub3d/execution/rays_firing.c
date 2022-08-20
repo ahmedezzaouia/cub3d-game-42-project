@@ -7,6 +7,8 @@ void lst1_init(s_cub *cub,s_ray *lst1)
     lst1->y = 30;
     lst1->min_raduis = cub->radien  - 0.57595865315;
     lst1->max_raduis = cub->radien  + 0.57595865315;
+    lst1->map_min_raduis = cub->radien  - M_PI;
+    lst1->map_max_raduis = cub->radien  + M_PI;
 }
 
 void rays_firing(s_cub *cub)

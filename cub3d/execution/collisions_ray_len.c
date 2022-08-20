@@ -5,7 +5,7 @@ double collisions_ray_len(s_cub *cub, double radian,int len)
 {
     s_line lst;
 
-    lst_init1(cub,&lst,radian,len);
+    lst_init(cub,&lst,radian,len);
     while(lst.pixels--)
     {
         lst.a = round(((lst.begin_y-15)/30)-1);

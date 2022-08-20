@@ -70,7 +70,7 @@ void check_map_if_valid_2(s_cub *cub, t_list *lst)
         }
     }
 }
-void lst_init(t_list *lst)
+void _lst_init(t_list *lst)
 {
     lst->a = 0;
     lst->b = 0;
@@ -86,7 +86,7 @@ void check_map_if_valid(s_cub *cub)
 {
     t_list lst;
 
-    lst_init(&lst);
+    _lst_init(&lst);
     while(cub->map_buffer[++lst.a])
     {
         lst.b = -1;

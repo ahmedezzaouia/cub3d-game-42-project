@@ -69,7 +69,7 @@ void floor_part(s_cub *cub,int a)
 {
     (void) cub;
     while(++cub->ray_pixels < 900)
-        img_pixel_put(cub,a,cub->ray_pixels,0x3A6F7E); 
+        img_pixel_put(cub,a,cub->ray_pixels,0x3A6F7E);
 }
 void engin(s_cub *cub, int a, int b)
 {
@@ -95,5 +95,4 @@ void engin(s_cub *cub, int a, int b)
         wall_part(cub,a,b,w_ppl);
         floor_part(cub,a);
     }
-    mlx_put_image_to_window(cub->ptr,cub->win_cub3d,cub->img_of_screen,0,0);
 }
