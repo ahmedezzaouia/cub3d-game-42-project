@@ -46,7 +46,7 @@ int	update(int keycode, s_cub *cub)
 		ft_error("cub3D exited successful");
 	update_map(cub);
 	ft_calc_width_walls(cub, -1, -1);
-	engin(cub);
+	engin(cub, -1, 0);
 	return (0);
 }
 
@@ -54,7 +54,6 @@ void	_mlx_init_2(s_cub *cub)
 {
 	int	a;
 	int	b;
-
 	cub->img_black_screen = mlx_xpm_file_to_image(cub->ptr,
 			"texture/big_black_screen.xpm", &a, &b);
 	if (!cub->img_black_screen)
@@ -75,6 +74,11 @@ void	_mlx_init_2(s_cub *cub)
 			"texture/small_oouazize_1.xpm", &a, &b);
 	if (!cub->east_wall)
 		ft_error("can't get img_east_wall data");
+	cub->img[0]->addr = mlx_get_data_addr(cub->img_of_screen, &cub->img[0]->bpp, &cub->img[0]->line_len, &cub->img[0]->endien);
+	cub->img[1]->addr = mlx_get_data_addr(cub->east_wall,&cub->img[1]->bpp,&cub->img[1]->line_len,&cub->img[1]->endien);
+	cub->img[2]->addr = mlx_get_data_addr(cub->west_wall,&cub->img[2]->bpp,&cub->img[2]->line_len,&cub->img[2]->endien);
+	cub->img[3]->addr = mlx_get_data_addr(cub->south_wall,&cub->img[3]->bpp,&cub->img[3]->line_len,&cub->img[3]->endien);
+	cub->img[4]->addr = mlx_get_data_addr(cub->north_wall,&cub->img[4]->bpp,&cub->img[4]->line_len,&cub->img[4]->endien);
 }
 
 void	_mlx_init_1(s_cub *cub)

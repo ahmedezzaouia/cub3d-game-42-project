@@ -1,12 +1,31 @@
 #include "cub3d.h"
 
+s_cub	*cub_init_2(void)
+{
+	int a;
+	s_cub	*cub;
+
+	a = -1;
+	cub = malloc(sizeof(s_cub));
+	if (!cub)
+		ft_error("allocation error for 's_cub *cub'");
+	cub->img = malloc(sizeof(s_img *) * 5);
+	if(!cub->img)
+			ft_error("cant allocat pointer of img struct");
+	while(++a < 5)
+	{
+		cub->img[a] = malloc(sizeof(s_img));
+		if(!cub->img[a])
+			ft_error("cant allocat img struct");
+	}
+	return (cub);
+}
+
 s_cub	*cub_init(char **argv)
 {
 	s_cub	*cub;
 
-	cub = malloc(sizeof(s_cub));
-	if (!cub)
-		ft_error("allocation error for 's_cub *cub'");
+	cub = cub_init_2();
 	cub->radien = -M_PI / 2;
 	cub->rev_radien = M_PI / 2;
 	cub->ceilling_color = NULL;

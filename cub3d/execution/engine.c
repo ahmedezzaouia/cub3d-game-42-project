@@ -12,104 +12,30 @@
 
 
 #include "../cub3d.h"
+#include "execution.h"
 
-
-void txt_img_pixel_put(s_cub *cub,s_img *img,int x, int y,int txt_x,int txt_y)
-{
-    s_img   walls_txt;
-    int     txt_index;
-    int     index;
-
-    (void) txt_x;
-    (void) txt_y;
-    if((x < 1500 && y < 900) && (txt_x < 64 && txt_y < 64))
-    {
-        walls_txt.addr = mlx_get_data_addr(cub->north_wall,&walls_txt.bpp,&walls_txt.line_len,&walls_txt.endien);
-        txt_index = (txt_y * walls_txt.line_len + txt_x * (walls_txt.bpp / 8));
-        index = (y * img->line_len + x * (img->bpp / 8));
-        img->addr[index] = (int)walls_txt.addr[txt_index];
-        img->addr[index+1] = (int)walls_txt.addr[txt_index+1];
-        img->addr[index+2] = (int)walls_txt.addr[txt_index+2];
-    }
-}
-
-void txt_img_pixel_put2(s_cub *cub,s_img *img,int x, int y,int txt_x,int txt_y)
-{
-    s_img   walls_txt;
-    int     txt_index;
-    int     index;
-
-    (void) txt_x;
-    (void) txt_y;
-    if((x < 1500 && y < 900) && (txt_x < 64 && txt_y < 64))
-    {
-        walls_txt.addr = mlx_get_data_addr(cub->south_wall,&walls_txt.bpp,&walls_txt.line_len,&walls_txt.endien);
-        txt_index = (txt_y * walls_txt.line_len + txt_x * (walls_txt.bpp / 8));
-        index = (y * img->line_len + x * (img->bpp / 8));
-        img->addr[index] = (int)walls_txt.addr[txt_index];
-        img->addr[index+1] = (int)walls_txt.addr[txt_index+1];
-        img->addr[index+2] = (int)walls_txt.addr[txt_index+2];
-    }
-}
-void txt_img_pixel_put3(s_cub *cub,s_img *img,int x, int y,int txt_x,int txt_y)
-{
-    s_img   walls_txt;
-    int     txt_index;
-    int     index;
-
-    (void) txt_x;
-    (void) txt_y;
-    if((x < 1500 && y < 900) && (txt_x < 64 && txt_y < 64))
-    {
-        walls_txt.addr = mlx_get_data_addr(cub->west_wall,&walls_txt.bpp,&walls_txt.line_len,&walls_txt.endien);
-        txt_index = (txt_y * walls_txt.line_len + txt_x * (walls_txt.bpp / 8));
-        index = (y * img->line_len + x * (img->bpp / 8));
-        img->addr[index] = (int)walls_txt.addr[txt_index];
-        img->addr[index+1] = (int)walls_txt.addr[txt_index+1];
-        img->addr[index+2] = (int)walls_txt.addr[txt_index+2];
-    }
-}
-
-void txt_img_pixel_put4(s_cub *cub,s_img *img,int x, int y,int txt_x,int txt_y)
-{
-    s_img   walls_txt;
-    int     txt_index;
-    int     index;
-
-    (void) txt_x;
-    (void) txt_y;
-    if((x < 1500 && y < 900) && (txt_x < 64 && txt_y < 64))
-    {
-        walls_txt.addr = mlx_get_data_addr(cub->east_wall,&walls_txt.bpp,&walls_txt.line_len,&walls_txt.endien);
-        txt_index = (txt_y * walls_txt.line_len + txt_x * (walls_txt.bpp / 8));
-        index = (y * img->line_len + x * (img->bpp / 8));
-        img->addr[index] = (int)walls_txt.addr[txt_index];
-        img->addr[index+1] = (int)walls_txt.addr[txt_index+1];
-        img->addr[index+2] = (int)walls_txt.addr[txt_index+2];
-    }
-}
-
-void	img_pixel_put(s_img *img, int x, int y, int color)
-{
-	char    *pixel;
-
-    if(x < 1500 && y < 900)
-    {
-        pixel = img->addr + (y * img->line_len) + (x * (img->bpp / 8));
-	    *(int *)pixel = color;
-    }
-}
-
-void celing_part(s_cub *cub,s_img *img,int a)
+void celing_part(s_cub *cub,int a)
 {
     (void) cub;
-    (void) img;
     cub->wall_px = (64 / cub->ray_len[a/3]) * 255;
     cub->celing_px = 450 - (cub->wall_px/2);
     while(++cub->ray_pixels < cub->celing_px)
-        img_pixel_put(img,a,cub->ray_pixels,0x484B47);
+        img_pixel_put(cub,a,cub->ray_pixels,0x484B47);
 }
-void wall_part(s_cub *cub,s_img *img,int a,int b,float w_ppl)
+void wall_part_2(s_cub *cub, int txt_x, int txt_y, int a)
+{
+    if(cub->color_of_wall[a/3] == 16777215)
+        txt_img_pixel_put1(cub,cub->img[4],a,cub->ray_pixels,txt_x,txt_y);
+    else if(cub->color_of_wall[a/3] == 11997714)
+        txt_img_pixel_put1(cub,cub->img[3],a,cub->ray_pixels,txt_x,txt_y);
+    else if(cub->color_of_wall[a/3] == 8654765)
+        txt_img_pixel_put1(cub,cub->img[2],a,cub->ray_pixels,txt_x,txt_y);
+    else if (cub->color_of_wall[a/3] == 1012909)
+        txt_img_pixel_put1(cub,cub->img[1],a,cub->ray_pixels,txt_x,txt_y);
+    else if(cub->color_of_wall[a/3] == 0)
+        img_pixel_put(cub,a,cub->ray_pixels,0);
+}
+void wall_part(s_cub *cub,int a,int b,float w_ppl)
 {
     int loop;
     float ppl;
@@ -118,7 +44,6 @@ void wall_part(s_cub *cub,s_img *img,int a,int b,float w_ppl)
 
     int y;
     (void) cub;
-    (void) img;
     loop = -1;
     y = -1;
     ppl = cub->wall_px/64.0;
@@ -136,39 +61,23 @@ void wall_part(s_cub *cub,s_img *img,int a,int b,float w_ppl)
             txt_x = b*(1/w_ppl);
         if(txt_y > 63 || txt_x > 63)
             break;
-        if(cub->color_of_wall[a/3] == 16777215)
-            txt_img_pixel_put(cub,img,a,cub->ray_pixels,txt_x,txt_y);
-        else if(cub->color_of_wall[a/3] == 11997714)
-            txt_img_pixel_put2(cub,img,a,cub->ray_pixels,txt_x,txt_y);
-        else if(cub->color_of_wall[a/3] == 8654765)
-            txt_img_pixel_put3(cub,img,a,cub->ray_pixels,txt_x,txt_y);
-        else if (cub->color_of_wall[a/3] == 1012909)
-            txt_img_pixel_put4(cub,img,a,cub->ray_pixels,txt_x,txt_y);
-        else if(cub->color_of_wall[a/3] == 0)
-            img_pixel_put(img,a,cub->ray_pixels,0);
+        wall_part_2(cub, txt_x, txt_y, a);
     }
 }
-void floor_part(s_cub *cub,s_img *img,int a)
+void floor_part(s_cub *cub,int a)
 {
     (void) cub;
-    (void) img;
     while(++cub->ray_pixels < 900)
-        img_pixel_put(img,a,cub->ray_pixels,0x3A6F7E); 
+        img_pixel_put(cub,a,cub->ray_pixels,0x3A6F7E); 
 }
-void engin(s_cub *cub)
+void engin(s_cub *cub, int a, int b)
 {
-    s_img img;
-    int a;
     int x;
     int txt_x;
     float w_ppl;
-    int b;
 
-    img.addr = mlx_get_data_addr(cub->img_of_screen, &img.bpp, &img.line_len, &img.endien);
     mlx_put_image_to_window(cub->ptr, cub->win_cub3d, cub->img_wall, 0, 0);
-    a = -1;
     x = 0;
-    b = 0;
     txt_x = cub->wall_width[0]*3.4;
     w_ppl = txt_x/64.0;
     while(++a < 1500)
@@ -181,9 +90,9 @@ void engin(s_cub *cub)
         }
         ++b;
         cub->ray_pixels = -1;
-        celing_part(cub,&img,a);
-        wall_part(cub,&img,a,b,w_ppl);
-        floor_part(cub,&img,a);
+        celing_part(cub,a);
+        wall_part(cub,a,b,w_ppl);
+        floor_part(cub,a);
     }
     mlx_put_image_to_window(cub->ptr,cub->win_cub3d,cub->img_of_screen,0,0);
 }

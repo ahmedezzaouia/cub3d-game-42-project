@@ -27,8 +27,17 @@
 # include "./get_next_line/get_next_line.h"
 # include "./parssing/parssing.h"
 
+typedef struct t_img
+{
+	char	*addr;
+	int		line_len;
+	int		bpp;
+	int		endien;
+}	s_img;
+
 typedef struct t_list
 {
+	s_img	**img;
 	char	*north_path;
 	char	*south_path;
 	char	*west_path;
@@ -72,15 +81,8 @@ typedef struct t_list
 	int		wall_width[100];
 	double	up_len;
 	double	down_len;
-}	s_cub;
 
-typedef struct t_img
-{
-	char	*addr;
-	int		line_len;
-	int		bpp;
-	int		endien;
-}	s_img;
+}	s_cub;
 
 // utilitis functions
 int		ft_strlen(char *str);
@@ -108,7 +110,7 @@ void	ft_calc_size_of_img(s_cub *cub);
 void	display_2d_map(s_cub *cub);
 void	update_map(s_cub *cub);
 void	ft_calc_width_walls(s_cub *cub, int a, int b);
-void	engin(s_cub *cub);
+void	engin(s_cub *cub, int a, int b);
 int	update(int keycode, s_cub *cub);
 int	ft_close(s_cub *cub);
 
