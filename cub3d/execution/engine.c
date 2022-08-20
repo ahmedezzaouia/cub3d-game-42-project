@@ -17,22 +17,23 @@
 void celing_part(s_cub *cub,int a)
 {
     (void) cub;
-    cub->wall_px = (64 / cub->ray_len[a/3]) * 255;
+    cub->wall_px = (64 / cub->ray_len[a]) * 255;
+    cub->wall_px *=2;
     cub->celing_px = 450 - (cub->wall_px/2);
     while(++cub->ray_pixels < cub->celing_px)
         img_pixel_put(cub,a,cub->ray_pixels,0x484B47);
 }
 void wall_part_2(s_cub *cub, int txt_x, int txt_y, int a)
 {
-    if(cub->color_of_wall[a/3] == 16777215)
+    if(cub->color_of_wall[a] == 16777215)
         txt_img_pixel_put1(cub,cub->img[4],a,cub->ray_pixels,txt_x,txt_y);
-    else if(cub->color_of_wall[a/3] == 11997714)
+    else if(cub->color_of_wall[a] == 11997714)
         txt_img_pixel_put1(cub,cub->img[3],a,cub->ray_pixels,txt_x,txt_y);
-    else if(cub->color_of_wall[a/3] == 8654765)
+    else if(cub->color_of_wall[a] == 8654765)
         txt_img_pixel_put1(cub,cub->img[2],a,cub->ray_pixels,txt_x,txt_y);
-    else if (cub->color_of_wall[a/3] == 1012909)
+    else if (cub->color_of_wall[a] == 1012909)
         txt_img_pixel_put1(cub,cub->img[1],a,cub->ray_pixels,txt_x,txt_y);
-    else if(cub->color_of_wall[a/3] == 0)
+    else if(cub->color_of_wall[a] == 0)
         img_pixel_put(cub,a,cub->ray_pixels,0);
 }
 void wall_part(s_cub *cub,int a,int b,float w_ppl)
@@ -78,13 +79,13 @@ void engin(s_cub *cub, int a, int b)
 
     mlx_put_image_to_window(cub->ptr, cub->win_cub3d, cub->img_wall, 0, 0);
     x = 0;
-    txt_x = cub->wall_width[0]*3.4;
+    txt_x = cub->wall_width[0]*1.1;
     w_ppl = txt_x/64.0;
     while(++a < 1500)
     {
         if(--txt_x == 0)
         {
-            txt_x = cub->wall_width[++x]*3.4;
+            txt_x = cub->wall_width[++x]*1.1;
             w_ppl = txt_x/64.0;
             b = 0;
         }

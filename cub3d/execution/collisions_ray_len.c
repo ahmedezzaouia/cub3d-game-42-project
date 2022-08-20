@@ -1,7 +1,7 @@
 #include "../cub3d.h"
 #include "execution.h"
 
-double ray_collision_len(s_cub *cub, double radian,int len)
+double collisions_ray_len(s_cub *cub, double radian,int len)
 {
     s_line lst;
 

@@ -16,7 +16,7 @@ void lst_init1(s_cub *cub, s_line *lst, double radien, int len)
     lst->b = -1;
     lst->d = 75;
 }
-void draw_line(s_cub *cub,double radien,int len)
+void ray_collision(s_cub *cub,double radien,int len)
 {
     s_line lst;
 
@@ -33,8 +33,9 @@ void draw_line(s_cub *cub,double radien,int len)
                 break;
             }
         }
-        // if(lst.d-- > 0)
-        //     mlx_pixel_put(cub->ptr,cub->win,lst.begin_x,lst.begin_y,16777215);
+        if(lst.d-- > 0)
+            mlx_pixel_put(cub->ptr,cub->win_cub3d,lst.begin_x,lst.begin_y,16777215);
+        mlx_pixel_put(cub->ptr,cub->win_cub3d,lst.begin_x,lst.begin_y,0x331A66);
         lst.begin_x += lst.deltaX;
         lst.begin_y += lst.deltaY;
     }

@@ -14,7 +14,7 @@ void ray_len(s_cub *cub, s_line *lst, double radien)
 {
     static int c = -1;
 
-    if(c == 500)
+    if(c == 1500)
         c = -1;
     if(radien < -M_PI/2)
         cub->ray_len[++c] = sqrt(pow((cub->ppy-round(lst->begin_y)),2)

@@ -76,8 +76,8 @@ typedef struct t_list
 	int		celing_px;
 	int		wall_px;
 	int		floor_px;
-	double	ray_len[500];
-	int		color_of_wall[500];
+	double	ray_len[1500];
+	int		color_of_wall[1500];
 	int		wall_width[100];
 	double	up_len;
 	double	down_len;
@@ -108,10 +108,11 @@ void	ft_calc_size_of_img(s_cub *cub);
 
 //execution part
 void	display_2d_map(s_cub *cub);
-void	update_map(s_cub *cub);
+void	rays_firing(s_cub *cub);
 void	ft_calc_width_walls(s_cub *cub, int a, int b);
 void	engin(s_cub *cub, int a, int b);
-int	update(int keycode, s_cub *cub);
-int	ft_close(s_cub *cub);
+void	draw_line(s_cub *cub);
+int		update(int keycode, s_cub *cub);
+int		ft_close(s_cub *cub);
 
 #endif

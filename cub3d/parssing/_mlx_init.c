@@ -44,9 +44,10 @@ int	update(int keycode, s_cub *cub)
 	}
 	if (keycode == 53)
 		ft_error("cub3D exited successful");
-	update_map(cub);
+	rays_firing(cub);
 	ft_calc_width_walls(cub, -1, -1);
 	engin(cub, -1, 0);
+	draw_line(cub);
 	return (0);
 }
 

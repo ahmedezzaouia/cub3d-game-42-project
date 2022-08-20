@@ -21,15 +21,16 @@ void ft_bezero(s_cub *cub)
 
 void ft_calc_width_walls(s_cub *cub, int a, int b)
 {
-    int arr[100];
+    int c;
+    int arr[1000];
 
     ft_bezero(cub);
     cub->color_of_wall[0] = cub->color_of_wall[1];
-    while(++a < 100)
+    while(++a < 1000)
         arr[a] = 0;
     a = -1;
     b = -1;
-    while(++a < 500 && b < 100)
+    while(++a < 1500 && b < 1000)
     {
         if(a > 1)
         {
@@ -40,8 +41,8 @@ void ft_calc_width_walls(s_cub *cub, int a, int b)
         }
     }
     a = -1;
-    b = -1;
-    while(++a < 100 && b < 100)
-        if(arr[a] != 0)
-            cub->wall_width[++b] = arr[a];
+    c = -1;
+    while((++c < b + 1) && a < 100)
+        if(arr[c] != 0)
+            cub->wall_width[++a] = arr[c];
 }
