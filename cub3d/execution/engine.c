@@ -77,7 +77,7 @@ void engin(s_cub *cub, int a, int b)
     int txt_x;
     float w_ppl;
 
-    mlx_put_image_to_window(cub->ptr, cub->win_cub3d, cub->img_wall, 0, 0);
+    mlx_put_image_to_window(cub->ptr, cub->win_cub3d, cub->img_black_screen, 0, 0);
     x = 0;
     txt_x = cub->wall_width[0]*1.1;
     w_ppl = txt_x/64.0;

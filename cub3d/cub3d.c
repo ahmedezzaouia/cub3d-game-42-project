@@ -9,10 +9,10 @@ s_cub	*cub_init_2(void)
 	cub = malloc(sizeof(s_cub));
 	if (!cub)
 		ft_error("allocation error for 's_cub *cub'");
-	cub->img = malloc(sizeof(s_img *) * 5);
+	cub->img = malloc(sizeof(s_img *) * 6);
 	if(!cub->img)
 			ft_error("cant allocat pointer of img struct");
-	while(++a < 5)
+	while(++a < 6)
 	{
 		cub->img[a] = malloc(sizeof(s_img));
 		if(!cub->img[a])
@@ -56,9 +56,11 @@ int main (int argc,char **argv)
 	cub = cub_init(argv);
 	check_map_if_valid(cub);
 	_mlx_init(cub);
-	display_2d_map(cub);
-	mlx_hook(cub->win_cub3d, 2, 0L, update, cub);
+	player_pos(cub);
+	mlx_hook(cub->win_cub3d, 2, 0L, key_press, cub);
+	mlx_hook(cub->win_cub3d, 6, 0L, mouse_mv, cub);
 	mlx_hook(cub->win_cub3d, 17, 0L, ft_close, cub);
+	mlx_loop_hook(cub->ptr,update,cub);
 	mlx_loop(cub->ptr);
 	return(0);
 }

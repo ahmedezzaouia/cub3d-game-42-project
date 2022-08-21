@@ -12,45 +12,6 @@
 
 #include "../cub3d.h"
 
-int	ft_close(s_cub *cub)
-{
-	write(1, "programe exited sucsfull\n", 25);
-	mlx_destroy_window(cub->ptr, cub->win);
-	exit(0);
-	return (0);
-}
-
-int	update(int keycode, s_cub *cub)
-{
-	if ((keycode == 13 || keycode == 126) && cub->up_len > 15)
-	{
-		cub->ppy += roundf(sin(cub->radien) * 5);
-		cub->ppx += roundf(cos(cub->radien) * 5);
-	}
-	if ((keycode == 1 || keycode == 125) && cub->down_len > 15)
-	{
-		cub->ppy -= roundf(sin(cub->radien) * 5);
-		cub->ppx -= roundf(cos(cub->radien) * 5);
-	}
-	if (keycode == 2 || keycode == 124)
-	{
-		cub->radien += 0.075;
-		cub->rev_radien += 0.075;
-	}
-	if (keycode == 0 || keycode == 123)
-	{
-		cub->radien -= 0.075;
-		cub->rev_radien -= 0.075;
-	}
-	if (keycode == 53)
-		ft_error("cub3D exited successful");
-	rays_firing(cub);
-	ft_calc_width_walls(cub, -1, -1);
-	engin(cub, -1, 0);
-	draw_line(cub);
-	return (0);
-}
-
 void	_mlx_init_2(s_cub *cub)
 {
 	int	a;
@@ -75,11 +36,16 @@ void	_mlx_init_2(s_cub *cub)
 			"texture/small_oouazize_1.xpm", &a, &b);
 	if (!cub->east_wall)
 		ft_error("can't get img_east_wall data");
+	cub->minimap = mlx_xpm_file_to_image(cub->ptr,
+			"texture/minimap.xpm", &a, &b);
+	if (!cub->minimap)
+		ft_error("can't get img_minimap data");
 	cub->img[0]->addr = mlx_get_data_addr(cub->img_of_screen, &cub->img[0]->bpp, &cub->img[0]->line_len, &cub->img[0]->endien);
 	cub->img[1]->addr = mlx_get_data_addr(cub->east_wall,&cub->img[1]->bpp,&cub->img[1]->line_len,&cub->img[1]->endien);
 	cub->img[2]->addr = mlx_get_data_addr(cub->west_wall,&cub->img[2]->bpp,&cub->img[2]->line_len,&cub->img[2]->endien);
 	cub->img[3]->addr = mlx_get_data_addr(cub->south_wall,&cub->img[3]->bpp,&cub->img[3]->line_len,&cub->img[3]->endien);
 	cub->img[4]->addr = mlx_get_data_addr(cub->north_wall,&cub->img[4]->bpp,&cub->img[4]->line_len,&cub->img[4]->endien);
+	cub->img[5]->addr = mlx_get_data_addr(cub->minimap,&cub->img[5]->bpp,&cub->img[5]->line_len,&cub->img[5]->endien);
 }
 
 void	_mlx_init_1(s_cub *cub)
@@ -115,6 +81,7 @@ void	_mlx_init_1(s_cub *cub)
 void	_mlx_init(s_cub *cub)
 {
 	ft_calc_size_of_img(cub);
+	get_len_of_map(cub);
 	_mlx_init_1(cub);
 	_mlx_init_2(cub);
 }

@@ -35,5 +35,11 @@ void rays_firing(s_cub *cub)
     cub->down_len = collisions_ray_len(cub,cub->rev_radien,25);
     if(cub->down_len < 10)
         cub->down_len = 10;
+    cub->right_len = collisions_ray_len(cub,cub->radien+M_PI/2.0,25);
+    if(cub->right_len < 10)
+        cub->right_len = 10;
+    cub->left_len = collisions_ray_len(cub,cub->rev_radien+M_PI/2.0,25);
+    if(cub->left_len < 10)
+        cub->left_len = 10;
     // mlx_put_image_to_window(cub->ptr,cub->win,cub->img_player,cub->ppx,cub->ppy);
 }

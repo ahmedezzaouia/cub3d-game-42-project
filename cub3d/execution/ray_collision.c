@@ -25,12 +25,15 @@ void rays_collision(s_cub *cub,double radien,int len)
     {
         lst.a = round(((lst.begin_y-15)/30)-1);
         lst.b = round(((lst.begin_x-15)/30)-1);
-        if((lst.a > -1 && lst.a < 14) && (lst.b > -1 && lst.b<33))
+        if((lst.a > -1 && lst.a < cub->a_map_buf))
         {
-            if(cub->map_buffer[lst.a][lst.b] == '1')
+            if((lst.b > -1 && lst.b < cub->b_map_buf[lst.a]))
             {
-                ray_len(cub, &lst ,radien);
-                break;
+                if(cub->map_buffer[lst.a][lst.b] == '1')
+                {
+                    ray_len(cub, &lst ,radien);
+                    break;
+                }
             }
         }
         lst.begin_x += lst.deltaX;

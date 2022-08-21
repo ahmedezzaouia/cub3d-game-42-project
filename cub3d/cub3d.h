@@ -55,8 +55,11 @@ typedef struct t_list
 	void	*img_floor;
 	void	*img_empty;
 	void	*img_player;
+	void	*minimap;
 	int		x_pixel;
 	int		y_pixel;
+	int		a_map_buf;
+	int 	*b_map_buf;
 	int		px;
 	int		py;
 	int		ppx;
@@ -81,6 +84,9 @@ typedef struct t_list
 	int		wall_width[100];
 	double	up_len;
 	double	down_len;
+	double	right_len;
+	double	left_len;
+
 
 }	s_cub;
 
@@ -105,14 +111,17 @@ void	check_east_texture_path(s_cub *cub);
 int		*get_rgb_color(char *str);
 void	check_map_if_valid(s_cub *cub);
 void	ft_calc_size_of_img(s_cub *cub);
+void	get_len_of_map(s_cub * cub);
 
 //execution part
-void	display_2d_map(s_cub *cub);
+void	player_pos(s_cub *cub);
 void	rays_firing(s_cub *cub);
 void	ft_calc_width_walls(s_cub *cub, int a, int b);
 void	engin(s_cub *cub, int a, int b);
 void	draw_line(s_cub *cub);
-int		update(int keycode, s_cub *cub);
+int		key_press(int keycode, s_cub *cub);
+int		mouse_mv(int x, int y, s_cub *cub);
+int		update( s_cub *cub);
 int		ft_close(s_cub *cub);
 
 #endif
