@@ -51,11 +51,11 @@ int mouse_mv(int x, int y, s_cub *cub)
     (void) x;
     (void) y;
     (void) cub;
-    if(x > -1 && x < 1500 && y > -1 && y < 900 && old_x != -1)
+	if(x > -1 && x < 1500 && y > -1 && y < 900 && old_x != -1)
     {
         if(old_x > x)
         {
-            cub->radien -= (old_x-x)/150.0;
+            cub->radien -= (old_x-x)/150.0;//150.0 is for sensyvity
             cub->rev_radien -= (old_x-x)/150.0;
         }
         else
@@ -71,7 +71,7 @@ int mouse_mv(int x, int y, s_cub *cub)
 int update( s_cub *cub)
 {
     rays_firing(cub);
-	ft_calc_width_walls(cub, -1, -1);
+	// ft_calc_width_walls(cub, -1, -1);
 	engin(cub, -1, 0);
 	draw_line(cub);
     return (0);

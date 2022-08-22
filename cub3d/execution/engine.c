@@ -33,14 +33,14 @@ void wall_part_2(s_cub *cub, int txt_x, int txt_y, int a)
         txt_img_pixel_put1(cub,cub->img[2],a,cub->ray_pixels,txt_x,txt_y);
     else if (cub->color_of_wall[a] == 1012909)
         txt_img_pixel_put1(cub,cub->img[1],a,cub->ray_pixels,txt_x,txt_y);
-    else if(cub->color_of_wall[a] == 0)
-        img_pixel_put(cub,a,cub->ray_pixels,0);
+    // else if(cub->color_of_wall[a] == 0)
+    //     img_pixel_put(cub,a,cub->ray_pixels,0);
 }
-void wall_part(s_cub *cub,int a,int b,float w_ppl)
+void wall_part(s_cub *cub,int a)
 {
     int loop;
     float ppl;
-    int txt_x;
+    // int txt_x;
     int txt_y;
 
     int y;
@@ -56,13 +56,13 @@ void wall_part(s_cub *cub,int a,int b,float w_ppl)
             txt_y = y/ppl;
         else if(ppl < 1)
             txt_y = y*(1/ppl);
-        if(w_ppl >= 1)
-            txt_x = b/w_ppl;
-        else if(w_ppl < 1)
-            txt_x = b*(1/w_ppl);
-        if(txt_y > 63 || txt_x > 63)
+        // txt_x = a*(1/(30.0/64.0));
+        if(txt_y > 63/* && txt_x > 63*/)
             break;
-        wall_part_2(cub, txt_x, txt_y, a);
+        // printf("a %d txt_x %d\n",a,txt_x);
+        // printf("y %d txt_y %d\n",y,txt_y);
+        // printf("%d\n",cub->ray_hit_pos[a]);
+        wall_part_2(cub, cub->ray_hit_pos[a]*2, txt_y, a);
     }
 }
 void floor_part(s_cub *cub,int a)
@@ -73,26 +73,13 @@ void floor_part(s_cub *cub,int a)
 }
 void engin(s_cub *cub, int a, int b)
 {
-    int x;
-    int txt_x;
-    float w_ppl;
-
+    (void) b;
     mlx_put_image_to_window(cub->ptr, cub->win_cub3d, cub->img_black_screen, 0, 0);
-    x = 0;
-    txt_x = cub->wall_width[0]*1.1;
-    w_ppl = txt_x/64.0;
     while(++a < 1500)
     {
-        if(--txt_x == 0)
-        {
-            txt_x = cub->wall_width[++x]*1.1;
-            w_ppl = txt_x/64.0;
-            b = 0;
-        }
-        ++b;
         cub->ray_pixels = -1;
         celing_part(cub,a);
-        wall_part(cub,a,b,w_ppl);
+        wall_part(cub,a);
         floor_part(cub,a);
     }
 }

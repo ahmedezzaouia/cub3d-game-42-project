@@ -31,6 +31,7 @@ void rays_collision(s_cub *cub,double radien,int len)
             {
                 if(cub->map_buffer[lst.a][lst.b] == '1')
                 {
+                    // printf("%d %d\n",(((int)lst.begin_y-16)%30),(((int)lst.begin_x-16)%30));
                     ray_len(cub, &lst ,radien);
                     break;
                 }

@@ -82,6 +82,7 @@ typedef struct t_list
 	double	ray_len[1500];
 	int		color_of_wall[1500];
 	int		wall_width[100];
+	int		ray_hit_pos[1500];
 	double	up_len;
 	double	down_len;
 	double	right_len;
