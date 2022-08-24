@@ -3,16 +3,10 @@
 
 void ray_len_2(s_cub *cub, s_line *lst,int c) 
 {
-    // if((((int)(lst->begin_y)+1) % 30 == 0 && ((int)(lst->begin_x)+1) % 30 == 0)
-    //     || ((int)(lst->begin_y) % 30 == 0 && (int)(lst->begin_x) % 30 == 0)
-    //     || (((int)(lst->begin_y)+1) % 30 == 0 && (int)(lst->begin_x) % 30 == 0)
-    //     || ((int)(lst->begin_y) % 30 == 0 && ((int)(lst->begin_x)+1) % 30 == 0))
-    //     cub->color_of_wall[c] = 0;
     if(((int)(lst->begin_y+18)) % 64 == 0 || (int)(lst->begin_y+17) % 64 == 0)
         cub->ray_hit_pos[c] = ((int)lst->begin_x+17)%64;
     else if(((int)(lst->begin_x+18)) % 64 == 0 || (int)(lst->begin_x+17) % 64 == 0)
         cub->ray_hit_pos[c] = ((int)lst->begin_y+17)%64;
-    //printf("%d\n",cub->ray_hit_pos[c]);
 }
 
 void ray_len(s_cub *cub, s_line *lst, double radien)

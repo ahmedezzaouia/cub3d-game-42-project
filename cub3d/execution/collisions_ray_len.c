@@ -16,7 +16,6 @@ double collisions_ray_len(s_cub *cub, double radian,int len)
                 return(sqrt(pow((cub->ppy-round(lst.begin_y)),2)
                         + pow(cub->ppx-round(lst.begin_x),2)));
         }
-        // mlx_pixel_put(cub->ptr,cub->win,lst.begin_x,lst.begin_y,0xff0000);
         lst.begin_x += lst.deltaX;
         lst.begin_y += lst.deltaY;
     }

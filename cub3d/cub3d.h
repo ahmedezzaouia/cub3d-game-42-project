@@ -111,13 +111,11 @@ void	check_west_texture_path(s_cub *cub);
 void	check_east_texture_path(s_cub *cub);
 int		*get_rgb_color(char *str);
 void	check_map_if_valid(s_cub *cub);
-void	ft_calc_size_of_img(s_cub *cub);
 void	get_len_of_map(s_cub * cub);
 
 //execution part
 void	player_pos(s_cub *cub);
 void	rays_firing(s_cub *cub);
-void	ft_calc_width_walls(s_cub *cub, int a, int b);
 void	engin(s_cub *cub, int a, int b);
 void	draw_line(s_cub *cub);
 int		key_press(int keycode, s_cub *cub);

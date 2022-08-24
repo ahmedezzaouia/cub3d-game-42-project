@@ -62,8 +62,7 @@ void wall_part(s_cub *cub,int a)
             txt_y = y/ppl;
         else if(ppl < 1)
             txt_y = y*(1/ppl);
-        // txt_x = a*(1/(30.0/64.0));
-        if(txt_y > 63/* && txt_x > 63*/)
+        if(txt_y > 63)
             break;
         wall_part_2(cub, cub->ray_hit_pos[a], txt_y, a);
     }

@@ -60,7 +60,6 @@ void	_mlx_init_1(s_cub *cub)
 	cub->img_of_screen = mlx_new_image(cub->ptr,1500,900);
     if(!cub->img_of_screen)
         ft_error("can't make img_of_screen");
-	// cub->win = mlx_new_window(cub->ptr, cub->x_pixel, cub->y_pixel, "2D_map");
 	cub->img_wall = mlx_xpm_file_to_image(cub->ptr, "texture/wall.xpm", &a, &b);
 	if (!cub->img_wall)
 		ft_error("can't get img_wall data");
@@ -80,7 +79,6 @@ void	_mlx_init_1(s_cub *cub)
 
 void	_mlx_init(s_cub *cub)
 {
-	ft_calc_size_of_img(cub);
 	get_len_of_map(cub);
 	_mlx_init_1(cub);
 	_mlx_init_2(cub);
