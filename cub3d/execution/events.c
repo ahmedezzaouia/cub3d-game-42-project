@@ -12,13 +12,13 @@ int	key_press(int keycode, s_cub *cub)
 {
 	if ((keycode == 13 || keycode == 126) && cub->up_len > 15)
 	{
-		cub->ppy += roundf(sin(cub->radien) * 5);
-		cub->ppx += roundf(cos(cub->radien) * 5);
+		cub->ppy += roundf(sin(cub->radien) * 10);
+		cub->ppx += roundf(cos(cub->radien) * 10);
 	}
 	if ((keycode == 1 || keycode == 125) && cub->down_len > 15)
 	{
-		cub->ppy -= roundf(sin(cub->radien) * 5);
-		cub->ppx -= roundf(cos(cub->radien) * 5);
+		cub->ppy -= roundf(sin(cub->radien) * 10);
+		cub->ppx -= roundf(cos(cub->radien) * 10);
 	}
 	if (keycode == 124)
 	{
@@ -32,13 +32,13 @@ int	key_press(int keycode, s_cub *cub)
 	}
 	if (keycode == 2 && cub->right_len > 15)
 	{
-		cub->ppy += roundf(sin(cub->radien+M_PI/2) * 5);
-		cub->ppx += roundf(cos(cub->radien+M_PI/2) * 5);
+		cub->ppy += roundf(sin(cub->radien+M_PI/2) * 10);
+		cub->ppx += roundf(cos(cub->radien+M_PI/2) * 10);
 	}
 	if (keycode == 0 && cub->left_len > 15)
 	{
-		cub->ppy -= roundf(sin(cub->radien+M_PI/2) * 5);
-		cub->ppx -= roundf(cos(cub->radien+M_PI/2) * 5);
+		cub->ppy -= roundf(sin(cub->radien+M_PI/2) * 10);
+		cub->ppx -= roundf(cos(cub->radien+M_PI/2) * 10);
 	}
 	if (keycode == 53)
 		ft_close(cub);
@@ -70,9 +70,15 @@ int mouse_mv(int x, int y, s_cub *cub)
 
 int update( s_cub *cub)
 {
-    rays_firing(cub);
-	// ft_calc_width_walls(cub, -1, -1);
-	engin(cub, -1, 0);
-	draw_line(cub);
+	static int a = -1;
+
+	while(++a % 20 == 0)
+	{
+		rays_firing(cub);
+		engin(cub, -1, 0);
+		draw_line(cub);
+		if(a == 1000)
+			a = -1;
+	}
     return (0);
 }

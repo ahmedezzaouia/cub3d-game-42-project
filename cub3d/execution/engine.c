@@ -17,7 +17,7 @@
 void celing_part(s_cub *cub,int a)
 {
     (void) cub;
-    cub->wall_px = (64 / cub->ray_len[a]) * 255;
+    cub->wall_px = (128 / cub->ray_len[a]) * 255;
     cub->wall_px *=2;
     cub->celing_px = 450 - (cub->wall_px/2);
     while(++cub->ray_pixels < cub->celing_px)
@@ -25,13 +25,19 @@ void celing_part(s_cub *cub,int a)
 }
 void wall_part_2(s_cub *cub, int txt_x, int txt_y, int a)
 {
+    (void) txt_x;
+    (void) txt_y;
     if(cub->color_of_wall[a] == 16777215)
+        // img_pixel_put(cub,a,cub->ray_pixels,16777215);
         txt_img_pixel_put1(cub,cub->img[4],a,cub->ray_pixels,txt_x,txt_y);
     else if(cub->color_of_wall[a] == 11997714)
+        // img_pixel_put(cub,a,cub->ray_pixels,11997714);
         txt_img_pixel_put1(cub,cub->img[3],a,cub->ray_pixels,txt_x,txt_y);
     else if(cub->color_of_wall[a] == 8654765)
+        // img_pixel_put(cub,a,cub->ray_pixels,8654765);
         txt_img_pixel_put1(cub,cub->img[2],a,cub->ray_pixels,txt_x,txt_y);
     else if (cub->color_of_wall[a] == 1012909)
+        // img_pixel_put(cub,a,cub->ray_pixels,1012909);
         txt_img_pixel_put1(cub,cub->img[1],a,cub->ray_pixels,txt_x,txt_y);
     // else if(cub->color_of_wall[a] == 0)
     //     img_pixel_put(cub,a,cub->ray_pixels,0);
@@ -59,10 +65,7 @@ void wall_part(s_cub *cub,int a)
         // txt_x = a*(1/(30.0/64.0));
         if(txt_y > 63/* && txt_x > 63*/)
             break;
-        // printf("a %d txt_x %d\n",a,txt_x);
-        // printf("y %d txt_y %d\n",y,txt_y);
-        // printf("%d\n",cub->ray_hit_pos[a]);
-        wall_part_2(cub, cub->ray_hit_pos[a]*2, txt_y, a);
+        wall_part_2(cub, cub->ray_hit_pos[a], txt_y, a);
     }
 }
 void floor_part(s_cub *cub,int a)

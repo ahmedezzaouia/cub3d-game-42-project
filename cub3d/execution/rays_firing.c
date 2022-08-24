@@ -4,7 +4,7 @@
 void lst1_init(s_cub *cub,s_ray *lst1)
 {
     lst1->a= -1;
-    lst1->y = 30;
+    lst1->y = 64;
     lst1->min_raduis = cub->radien  - 0.57595865315;
     lst1->max_raduis = cub->radien  + 0.57595865315;
     lst1->map_min_raduis = cub->radien  - M_PI;
@@ -19,10 +19,10 @@ void rays_firing(s_cub *cub)
     while(cub->map_buffer[++lst1.a])
     {
         lst1.b = -1;
-        lst1.x = 30;
+        lst1.x = 64;
         while(cub->map_buffer[lst1.a][++lst1.b])
-            lst1.x += 30;
-        lst1.y += 30;
+            lst1.x += 64;
+        lst1.y += 64;
     }
     while(lst1.min_raduis < lst1.max_raduis)
     {

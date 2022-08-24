@@ -10,8 +10,8 @@ void player_view(s_cub *cub,double radien,int len)
     lst_init(cub,&lst,radien,len);
     while(lst.pixels--)
     {
-        lst.a = round(((lst.begin_y-15)/30)-1);
-        lst.b = round(((lst.begin_x-15)/30)-1);
+        lst.a = round(((lst.begin_y-15)/64)-1);
+        lst.b = round(((lst.begin_x-15)/64)-1);
         if((lst.a > -1 && lst.a < cub->a_map_buf))
         {
             if((lst.b > -1 && lst.b < cub->b_map_buf[lst.a]))
@@ -41,8 +41,8 @@ void maps_ray_collision(s_cub *cub,double radien,int len)
     lst_init(cub,&lst,radien,len);
     while(lst.pixels--)
     {
-        lst.a = round(((lst.begin_y-15)/30)-1);
-        lst.b = round(((lst.begin_x-15)/30)-1);
+        lst.a = round(((lst.begin_y-15)/64)-1);
+        lst.b = round(((lst.begin_x-15)/64)-1);
         if((lst.a > -1 && lst.a < cub->a_map_buf))
             if((lst.b > -1 && lst.b < cub->b_map_buf[lst.a]))
                 if(cub->map_buffer[lst.a][lst.b] == '1')
@@ -93,10 +93,10 @@ void draw_line(s_cub *cub)
     while(cub->map_buffer[++lst1.a])
     {
         lst1.b = -1;
-        lst1.x = 30;
+        lst1.x = 64;
         while(cub->map_buffer[lst1.a][++lst1.b])
-            lst1.x += 30;
-        lst1.y += 30;
+            lst1.x += 64;
+        lst1.y += 64;
     }
     while(lst1.map_min_raduis < lst1.map_max_raduis)
     {

@@ -8,11 +8,11 @@ void ray_len_2(s_cub *cub, s_line *lst,int c)
     //     || (((int)(lst->begin_y)+1) % 30 == 0 && (int)(lst->begin_x) % 30 == 0)
     //     || ((int)(lst->begin_y) % 30 == 0 && ((int)(lst->begin_x)+1) % 30 == 0))
     //     cub->color_of_wall[c] = 0;
-    if(((int)(lst->begin_y)+1) % 30 == 0 || (int)(lst->begin_y) % 30 == 0)
-        cub->ray_hit_pos[c] = ((int)lst->begin_x)%30;
-    else if(((int)(lst->begin_x)+1) % 30 == 0 || (int)(lst->begin_x) % 30 == 0)
-        cub->ray_hit_pos[c] = ((int)lst->begin_y)%30;
-    printf("%d\n",cub->ray_hit_pos[c]);
+    if(((int)(lst->begin_y+18)) % 64 == 0 || (int)(lst->begin_y+17) % 64 == 0)
+        cub->ray_hit_pos[c] = ((int)lst->begin_x+17)%64;
+    else if(((int)(lst->begin_x+18)) % 64 == 0 || (int)(lst->begin_x+17) % 64 == 0)
+        cub->ray_hit_pos[c] = ((int)lst->begin_y+17)%64;
+    //printf("%d\n",cub->ray_hit_pos[c]);
 }
 
 void ray_len(s_cub *cub, s_line *lst, double radien)
@@ -29,19 +29,19 @@ void ray_len(s_cub *cub, s_line *lst, double radien)
             + pow(cub->ppx-round(lst->begin_x),2))*cos(radien-(cub->radien));
     if(cub->ray_len[c] < 10)
         cub->ray_len[c] = 10;
-    if(((int)(lst->begin_y)+1) % 30 == 0 && ((int)(lst->begin_x)) % 30 != 0
-        && ((int)(lst->begin_x)+1) % 30 != 0 && lst->begin_y < cub->ppy+5)
+    if(((int)(lst->begin_y+18)) % 64 == 0 && ((int)(lst->begin_x+17)) % 64 != 0
+        && ((int)(lst->begin_x+18)) % 64 != 0 && lst->begin_y < cub->ppy+5)
         cub->color_of_wall[c] = 16777215;
-    else if(((int)(lst->begin_y)+1) % 30 == 0 && cub->color_of_wall[c-1] == 16777215)
+    else if(((int)(lst->begin_y+18)) % 64 == 0 && cub->color_of_wall[c-1] == 16777215)
         cub->color_of_wall[c] = 16777215;
-    else if((int)(lst->begin_y) % 30 == 0 && ((int)(lst->begin_x)) % 30 != 0
-        && ((int)(lst->begin_x)+1) % 30 != 0 && lst->begin_y > cub->ppy+5)
+    else if((int)(lst->begin_y+17) % 64 == 0 && ((int)(lst->begin_x+17)) % 64 != 0
+        && ((int)(lst->begin_x+18)) % 64 != 0 && lst->begin_y > cub->ppy+5)
         cub->color_of_wall[c] = 11997714;
-    else if((int)(lst->begin_y) % 30 == 0 && cub->color_of_wall[c-1] == 11997714)
+    else if((int)(lst->begin_y+17) % 64 == 0 && cub->color_of_wall[c-1] == 11997714)
         cub->color_of_wall[c] = 11997714;
-    else if (((int)(lst->begin_x)+1) % 30 == 0 && lst->begin_x < cub->ppx+5)
+    else if (((int)(lst->begin_x+18)) % 64 == 0 && lst->begin_x < cub->ppx+5)
         cub->color_of_wall[c] = 8654765;
-    else if ((int)(lst->begin_x) % 30 == 0 && lst->begin_x > cub->ppx+5)
+    else if ((int)(lst->begin_x+17) % 64 == 0 && lst->begin_x > cub->ppx+5)
         cub->color_of_wall[c] = 1012909;
     ray_len_2(cub,lst,c);
 }
