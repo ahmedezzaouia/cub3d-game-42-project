@@ -1,4 +1,5 @@
 #include "../cub3d.h"
+#include "execution.h"
 
 int	ft_close(s_cub *cub)
 {
@@ -10,22 +11,22 @@ int	ft_close(s_cub *cub)
 
 int	key_press(int keycode, s_cub *cub)
 {
-	if ((keycode == 13 || keycode == 126) && cub->up_len > 15)
+	if ((keycode == 13 || keycode == 126) && collisions_ray_len(cub,cub->radien))
 	{
 		cub->ppy += roundf(sin(cub->radien) * 40);
 		cub->ppx += roundf(cos(cub->radien) * 40);
 	}
-	if ((keycode == 1 || keycode == 125) && cub->down_len > 15)
+	if ((keycode == 1 || keycode == 125) && collisions_ray_len(cub,cub->rev_radien))
 	{
 		cub->ppy -= roundf(sin(cub->radien) * 40);
 		cub->ppx -= roundf(cos(cub->radien) * 40);
 	}
-	if (keycode == 2 && cub->right_len > 15)
+	if (keycode == 2 && collisions_ray_len(cub,cub->radien+M_PI/2.0))
 	{
 		cub->ppy += roundf(sin(cub->radien+M_PI/2) * 40);
 		cub->ppx += roundf(cos(cub->radien+M_PI/2) * 40);
 	}
-	if (keycode == 0 && cub->left_len > 15)
+	if (keycode == 0 && collisions_ray_len(cub,cub->rev_radien+M_PI/2.0))
 	{
 		cub->ppy -= roundf(sin(cub->radien+M_PI/2) * 40);
 		cub->ppx -= roundf(cos(cub->radien+M_PI/2) * 40);

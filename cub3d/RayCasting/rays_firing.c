@@ -29,16 +29,4 @@ void rays_firing(s_cub *cub)
         rays_collision(cub,lst1.min_raduis,5000);
         lst1.min_raduis += 0.00076794487; //for 1 ray evry loop
     }
-    cub->up_len = collisions_ray_len(cub,cub->radien,25);
-    if(cub->up_len < 10)
-        cub->up_len = 10;
-    cub->down_len = collisions_ray_len(cub,cub->rev_radien,25);
-    if(cub->down_len < 10)
-        cub->down_len = 10;
-    cub->right_len = collisions_ray_len(cub,cub->radien+M_PI/2.0,25);
-    if(cub->right_len < 10)
-        cub->right_len = 10;
-    cub->left_len = collisions_ray_len(cub,cub->rev_radien+M_PI/2.0,25);
-    if(cub->left_len < 10)
-        cub->left_len = 10;
 }
