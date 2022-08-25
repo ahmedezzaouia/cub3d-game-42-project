@@ -1,7 +1,7 @@
-NO ./texture/small_ael-hayy_1
-SO ./texture/small_mamellal_1
-WE ./texture/small_oouazize_1
-EA ./texture/mabdelou-30px
+NO ./Texture/ael-hayy
+SO ./Texture/mamellal
+WE ./Texture/oouazize
+EA ./Texture/mabdelou
 
 F 220,100,0
 C 225,30,0

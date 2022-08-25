@@ -8,7 +8,7 @@ void txt_img_pixel_put1(s_cub *cub,s_img *img,int x, int y,int txt_x,int txt_y)
 
     (void) txt_x;
     (void) txt_y;
-    if((x < 1500 && y < 900) && (txt_x < 64 && txt_y < 64))
+    if((x < 1500 && y < 900) && (txt_x < 256 && txt_y < 256) && txt_y > -1)
     {
         txt_index = (txt_y * img->line_len + txt_x * (img->bpp / 8));
         index = (y * cub->img[0]->line_len + x * (cub->img[0]->bpp / 8));

@@ -23,8 +23,8 @@ void rays_collision(s_cub *cub,double radien,int len)
     lst_init(cub,&lst,radien,len);
     while(lst.pixels--)
     {
-        lst.a = round(((lst.begin_y-15)/64)-1);
-        lst.b = round(((lst.begin_x-15)/64)-1);
+        lst.a = round(((lst.begin_y-15)/256)-1);
+        lst.b = round(((lst.begin_x-15)/256)-1);
         if((lst.a > -1 && lst.a < cub->a_map_buf))
         {
             if((lst.b > -1 && lst.b < cub->b_map_buf[lst.a]))

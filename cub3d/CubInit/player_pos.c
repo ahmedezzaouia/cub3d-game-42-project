@@ -20,22 +20,22 @@ void player_pos(s_cub *cub)
     int y;
 
     a= -1;
-    y = 64;
+    y = 256;
     while(cub->map_buffer[++a])
     {
         b = -1;
-        x = 64;
+        x = 256;
         while(cub->map_buffer[a][++b])
         {
             if(cub->map_buffer[a][b] == 'N')
             {
                 cub->ppx = x+5;
                 cub->ppy = y+5;
-                cub->px = x/64;
-                cub->py = y/64;
+                cub->px = x/256;
+                cub->py = y/256;
             }
-            x += 64;
+            x += 256;
         }
-        y += 64;
+        y += 256;
     }
 }

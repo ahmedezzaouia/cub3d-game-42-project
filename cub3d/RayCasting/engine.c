@@ -17,7 +17,7 @@
 void celing_part(s_cub *cub,int a)
 {
     (void) cub;
-    cub->wall_px = (128 / cub->ray_len[a]) * 255;
+    cub->wall_px = (512 / cub->ray_len[a]) * 255;
     cub->wall_px *=2;
     cub->celing_px = 450 - (cub->wall_px/2);
     while(++cub->ray_pixels < cub->celing_px)
@@ -46,14 +46,14 @@ void wall_part(s_cub *cub,int a)
 {
     int loop;
     float ppl;
-    // int txt_x;
     int txt_y;
 
     int y;
-    (void) cub;
     loop = -1;
+    ppl = cub->wall_px/256.0;
     y = -1;
-    ppl = cub->wall_px/64.0;
+    if(cub->wall_px > 900)
+        y = (cub->wall_px - 900) / 2;
     while(++loop < cub->wall_px)
     {
         ++cub->ray_pixels;
@@ -62,7 +62,8 @@ void wall_part(s_cub *cub,int a)
             txt_y = y/ppl;
         else if(ppl < 1)
             txt_y = y*(1/ppl);
-        if(txt_y > 63)
+        // printf("%d\n",txt_y);
+        if(txt_y > 255 && txt_y < -1)
             break;
         wall_part_2(cub, cub->ray_hit_pos[a], txt_y, a);
     }

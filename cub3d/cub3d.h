@@ -24,8 +24,8 @@
 # include <mlx.h>
 # include <math.h>
 # include <fcntl.h>
-# include "./get_next_line/get_next_line.h"
-# include "./parssing/parssing.h"
+# include "./GetNextLine/get_next_line.h"
+# include "./CubInit/parssing.h"
 
 typedef struct t_img
 {
@@ -87,7 +87,6 @@ typedef struct t_list
 	double	down_len;
 	double	right_len;
 	double	left_len;
-
 
 }	s_cub;
 

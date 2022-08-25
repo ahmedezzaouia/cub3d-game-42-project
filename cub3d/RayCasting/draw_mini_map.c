@@ -3,15 +3,15 @@
 
 void lst_init_(s_cub *cub, s_line *lst, double radien, int len)
 {
-    cub->end_ray_x = len*cos(radien) + (cub->ppx/2);
-    cub->end_ray_y = len*sin(radien) + (cub->ppy/2);
-    lst->deltaX = cub->end_ray_x - (cub->ppx/2);
-    lst->deltaY = cub->end_ray_y - (cub->ppy/2);
+    cub->end_ray_x = len*cos(radien) + (cub->ppx/8);
+    cub->end_ray_y = len*sin(radien) + (cub->ppy/8);
+    lst->deltaX = cub->end_ray_x - (cub->ppx/8);
+    lst->deltaY = cub->end_ray_y - (cub->ppy/8);
     lst->pixels = sqrt((lst->deltaX*lst->deltaX)+(lst->deltaY*lst->deltaY));
     lst->deltaX /= lst->pixels;
     lst->deltaY /= lst->pixels;
-    lst->begin_x =(cub->ppx/2)+5;
-    lst->begin_y =(cub->ppy/2)+5;
+    lst->begin_x =(cub->ppx/8)+5;
+    lst->begin_y =(cub->ppy/8)+5;
     lst->a = -1;
     lst->b = -1;
     lst->d = 75;

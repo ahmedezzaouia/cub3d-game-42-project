@@ -12,13 +12,23 @@ int	key_press(int keycode, s_cub *cub)
 {
 	if ((keycode == 13 || keycode == 126) && cub->up_len > 15)
 	{
-		cub->ppy += roundf(sin(cub->radien) * 10);
-		cub->ppx += roundf(cos(cub->radien) * 10);
+		cub->ppy += roundf(sin(cub->radien) * 40);
+		cub->ppx += roundf(cos(cub->radien) * 40);
 	}
 	if ((keycode == 1 || keycode == 125) && cub->down_len > 15)
 	{
-		cub->ppy -= roundf(sin(cub->radien) * 10);
-		cub->ppx -= roundf(cos(cub->radien) * 10);
+		cub->ppy -= roundf(sin(cub->radien) * 40);
+		cub->ppx -= roundf(cos(cub->radien) * 40);
+	}
+	if (keycode == 2 && cub->right_len > 15)
+	{
+		cub->ppy += roundf(sin(cub->radien+M_PI/2) * 40);
+		cub->ppx += roundf(cos(cub->radien+M_PI/2) * 40);
+	}
+	if (keycode == 0 && cub->left_len > 15)
+	{
+		cub->ppy -= roundf(sin(cub->radien+M_PI/2) * 40);
+		cub->ppx -= roundf(cos(cub->radien+M_PI/2) * 40);
 	}
 	if (keycode == 124)
 	{
@@ -29,16 +39,6 @@ int	key_press(int keycode, s_cub *cub)
 	{
 		cub->radien -= 0.075;
 		cub->rev_radien -= 0.075;
-	}
-	if (keycode == 2 && cub->right_len > 15)
-	{
-		cub->ppy += roundf(sin(cub->radien+M_PI/2) * 10);
-		cub->ppx += roundf(cos(cub->radien+M_PI/2) * 10);
-	}
-	if (keycode == 0 && cub->left_len > 15)
-	{
-		cub->ppy -= roundf(sin(cub->radien+M_PI/2) * 10);
-		cub->ppx -= roundf(cos(cub->radien+M_PI/2) * 10);
 	}
 	if (keycode == 53)
 		ft_close(cub);

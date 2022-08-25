@@ -17,27 +17,27 @@ void	_mlx_init_2(s_cub *cub)
 	int	a;
 	int	b;
 	cub->img_black_screen = mlx_xpm_file_to_image(cub->ptr,
-			"texture/big_black_screen.xpm", &a, &b);
+			"./texture/big_black_screen.xpm", &a, &b);
 	if (!cub->img_black_screen)
 		ft_error("can't get img_black_screen data");
 	cub->north_wall = mlx_xpm_file_to_image(cub->ptr,
-			"texture/mabdelou-30px.xpm", &a, &b);
+			"./Texture/mabdelou.xpm", &a, &b);
 	if (!cub->north_wall)
 		ft_error("can't get img_north_wall data");
 	cub->south_wall = mlx_xpm_file_to_image(cub->ptr,
-			"texture/small_ael-hayy_1.xpm", &a, &b);
+			"./Texture/ael-hayy.xpm", &a, &b);
 	if (!cub->south_wall)
 		ft_error("can't get img_south_wall data");
 	cub->west_wall = mlx_xpm_file_to_image(cub->ptr,
-			"texture/small_mamellal_1.xpm", &a, &b);
+			"./Texture/mamellal.xpm", &a, &b);
 	if (!cub->west_wall)
 		ft_error("can't get img_west_wall data");
 	cub->east_wall = mlx_xpm_file_to_image(cub->ptr,
-			"texture/small_oouazize_1.xpm", &a, &b);
+			"./Texture/oouazize.xpm", &a, &b);
 	if (!cub->east_wall)
 		ft_error("can't get img_east_wall data");
 	cub->minimap = mlx_xpm_file_to_image(cub->ptr,
-			"texture/minimap.xpm", &a, &b);
+			"./Texture/minimap.xpm", &a, &b);
 	if (!cub->minimap)
 		ft_error("can't get img_minimap data");
 	cub->img[0]->addr = mlx_get_data_addr(cub->img_of_screen, &cub->img[0]->bpp, &cub->img[0]->line_len, &cub->img[0]->endien);
@@ -60,19 +60,19 @@ void	_mlx_init_1(s_cub *cub)
 	cub->img_of_screen = mlx_new_image(cub->ptr,1500,900);
     if(!cub->img_of_screen)
         ft_error("can't make img_of_screen");
-	cub->img_wall = mlx_xpm_file_to_image(cub->ptr, "texture/wall.xpm", &a, &b);
+	cub->img_wall = mlx_xpm_file_to_image(cub->ptr, "./Texture/wall.xpm", &a, &b);
 	if (!cub->img_wall)
 		ft_error("can't get img_wall data");
 	cub->img_floor = mlx_xpm_file_to_image(cub->ptr,
-			"texture/floor.xpm", &a, &b);
+			"./Texture/floor.xpm", &a, &b);
 	if (!cub->img_floor)
 		ft_error("can't get img_floor data");
 	cub->img_empty = mlx_xpm_file_to_image(cub->ptr,
-			"texture/black.xpm", &a, &b);
+			"./Texture/black.xpm", &a, &b);
 	if (!cub->img_empty)
 		ft_error("can't get img_empty data");
 	cub->img_player = mlx_xpm_file_to_image(cub->ptr,
-			"texture/player.xpm", &a, &b);
+			"./Texture/player.xpm", &a, &b);
 	if (!cub->img_player)
 		ft_error("can't get img_player data");
 }
