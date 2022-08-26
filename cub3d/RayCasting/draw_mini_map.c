@@ -10,8 +10,8 @@ void lst_init_(s_cub *cub, s_line *lst, double radien, int len)
     lst->pixels = sqrt((lst->deltaX*lst->deltaX)+(lst->deltaY*lst->deltaY));
     lst->deltaX /= lst->pixels;
     lst->deltaY /= lst->pixels;
-    lst->begin_x =(cub->ppx/8)+5;
-    lst->begin_y =(cub->ppy/8)+5;
+    lst->begin_x =(cub->ppx/8)+15;
+    lst->begin_y =(cub->ppy/8)+15;
     lst->a = -1;
     lst->b = -1;
     lst->d = 75;
