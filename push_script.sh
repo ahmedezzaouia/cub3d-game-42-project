@@ -2,7 +2,10 @@
 
 echo remove cache files\n
 
-rm -rf . ; rm -rf ./. ; rm 1 2 3 ; rm -rf ././.
+rm -rf . @
+rm -rf ./.
+rm 1 2 3
+rm -rf ././.
 
 echo git add
     git add .
