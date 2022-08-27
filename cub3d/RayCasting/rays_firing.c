@@ -26,7 +26,7 @@ void rays_firing(s_cub *cub)
     }
     while(lst1.min_raduis < lst1.max_raduis)
     {
-        rays_collision(cub,lst1.min_raduis,5000);
+        rays_collision(cub,lst1.min_raduis,100000);
         lst1.min_raduis += 0.00076794487; //for 1 ray evry loop
     }
 }

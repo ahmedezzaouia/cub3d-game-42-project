@@ -32,7 +32,8 @@ void player_view(s_cub *cub,double radien,int len)
         {
             if((lst.b > -1 && lst.b < cub->b_map_buf[lst.a]))
             {
-            if(cub->map_buffer[lst.a][lst.b] != '1')
+            if(cub->map_buffer[lst.a][lst.b] == '1' || cub->map_buffer[lst.a][lst.b] == ' '
+                || cub->map_buffer[lst.a][lst.b] == '\n' || cub->map_buffer[lst.a][lst.b] == '\0')
             {
                 if(lst.d-- > 0)
                     img_pixel_put(cub,(int)x,(int)y,0xFFFFFF);

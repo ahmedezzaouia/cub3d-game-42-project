@@ -54,7 +54,7 @@ void check_map_if_valid_2(s_cub *cub, t_list *lst)
             lst->c = -1;
             while(lst->str[++lst->c])
             {
-                // printf("%c\n",cub->map_buffer[0][lst->b]);
+                printf("%c\n",cub->map_buffer[0][lst->b]);
                 if(cub->map_buffer[0][lst->b] == lst->str[lst->c])
                     ft_error("bad map");
                 else if(cub->map_buffer[lst->a][0] == lst->str[lst->c])
