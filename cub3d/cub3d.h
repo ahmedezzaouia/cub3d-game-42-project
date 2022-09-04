@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mabdelou <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: ahmez-za <ahmez-za@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/18 11:59:27 by mabdelou          #+#    #+#             */
-/*   Updated: 2022/08/18 11:59:35 by mabdelou         ###   ########.fr       */
+/*   Updated: 2022/09/04 15:58:54 by ahmez-za         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,16 @@
 # include <math.h>
 # include <fcntl.h>
 # include "./GetNextLine/get_next_line.h"
+# include "./libft/libft.h"
 # include "./CubInit/parssing.h"
+
+
+typedef struct s_map
+{
+	char			*content;
+	struct s_map	*next;
+}	t_map;
+
 
 typedef struct t_img
 {
@@ -91,12 +100,9 @@ typedef struct t_list
 }	s_cub;
 
 // utilitis functions
-int		ft_strlen(char *str);
-int		ft_strncmp2(char *S1, char *S2, int num);
-int		ft_strcmp(char *S1, char *S2);
-char	*ft_strjoin(char *s1, char *s2);
 double	ft_to_radien(int degree);
 void	ft_error(char *error);
+void	*ft_calloc(size_t count, size_t size);
 char	*get_next_line(int fd);
 
 // parssing part

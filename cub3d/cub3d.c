@@ -52,9 +52,10 @@ int main (int argc,char **argv)
 
 	if (argc != 2)
 		ft_error("bad number of argumment");
-	check_path_of_map_file(argv[1]);
+	// check_path_of_map_file(argv[1]);
 	cub = cub_init(argv);
-	check_map_if_valid(cub);
+	// check_map_if_valid(cub);
+
 	_mlx_init(cub);
 	player_pos(cub);
 	mlx_hook(cub->win_cub3d, 2, 0L, key_press, cub);
