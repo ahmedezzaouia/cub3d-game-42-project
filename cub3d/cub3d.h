@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mabdelou <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: ahmez-za <ahmez-za@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/18 11:59:27 by mabdelou          #+#    #+#             */
-/*   Updated: 2022/08/18 11:59:35 by mabdelou         ###   ########.fr       */
+/*   Updated: 2022/09/04 19:18:09 by ahmez-za         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,13 @@
 # include <fcntl.h>
 # include "./GetNextLine/get_next_line.h"
 # include "./CubInit/parssing.h"
+# include "./libft/libft.h"
+
+typedef struct s_map
+{
+	char			*content;
+	struct s_map	*next;
+}	t_map;
 
 typedef struct t_img
 {
@@ -92,15 +99,15 @@ typedef struct t_list
 
 // utilitis functions
 int		ft_strlen(char *str);
-int		ft_strncmp2(char *S1, char *S2, int num);
-int		ft_strcmp(char *S1, char *S2);
-char	*ft_strjoin(char *s1, char *s2);
+// int		ft_strncmp2(char *S1, char *S2, int num);
+// int		ft_strcmp(char *S1, char *S2);
+// char	*ft_strjoin(char *s1, char *s2);
 double	ft_to_radien(int degree);
 void	ft_error(char *error);
 char	*get_next_line(int fd);
 
 // parssing part
-void	_mlx_init(s_cub *cub);
+// void	_mlx_init(s_cub *cub);
 void	check_path_of_map_file(char *path);
 void	get_buff_of_map(s_cub *cub, char *path);
 char	*get_texture_path(char *ptr);

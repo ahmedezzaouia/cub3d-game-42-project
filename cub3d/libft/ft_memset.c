@@ -1,21 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   check_path_of_map_file.c                           :+:      :+:    :+:   */
+/*   ft_memset.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mabdelou <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: ahmez-za <ahmez-za@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/08/04 12:03:08 by mabdelou          #+#    #+#             */
-/*   Updated: 2022/08/04 12:03:09 by mabdelou         ###   ########.fr       */
+/*   Created: 2021/11/03 20:51:18 by ahmez-za          #+#    #+#             */
+/*   Updated: 2021/11/17 12:51:47 by ahmez-za         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../cub3d.h"
+#include "libft.h"
 
-void	check_path_of_map_file(char *path)
+void	*ft_memset(void *b, int c, size_t len)
 {
-	if (ft_strncmp2(path, ".cub", 4) == -1)
-		ft_error("bad path of map file");
-	else if (ft_strcmp(path, ".cub") == 0)
-		ft_error("bad path of map file");
+	size_t			i;
+	char			*s;
+
+	s = b;
+	i = 0;
+	while (i < len)
+		s[i++] = (unsigned char) c;
+	return (b);
 }

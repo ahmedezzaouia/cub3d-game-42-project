@@ -25,6 +25,7 @@ s_cub	*cub_init(char **argv)
 {
 	s_cub	*cub;
 
+	(void)argv;
 	cub = cub_init_2();
 	cub->radien = -M_PI / 2;
 	cub->rev_radien = M_PI / 2;
@@ -36,13 +37,13 @@ s_cub	*cub_init(char **argv)
 	cub->south_path = NULL;
 	cub->west_path = NULL;
 	cub->buffer = NULL;
-	get_buff_of_map(cub, argv[1]);
-	check_north_texture_path(cub);
-	check_south_texture_path(cub);
-	check_west_texture_path(cub);
-	check_east_texture_path(cub);
-	cub->f_rgb = get_rgb_color(cub->floor_color);
-	cub->c_rgb = get_rgb_color(cub->ceilling_color);
+	// get_buff_of_map(cub, argv[1]);
+	// check_north_texture_path(cub);
+	// check_south_texture_path(cub);
+	// check_west_texture_path(cub);
+	// check_east_texture_path(cub);
+	// cub->f_rgb = get_rgb_color(cub->floor_color);
+	// cub->c_rgb = get_rgb_color(cub->ceilling_color);
 	return (cub);
 }
 
@@ -52,10 +53,13 @@ int main (int argc,char **argv)
 
 	if (argc != 2)
 		ft_error("bad number of argumment");
-	check_path_of_map_file(argv[1]);
 	cub = cub_init(argv);
-	check_map_if_valid(cub);
-	_mlx_init(cub);
+	
+	// check_path_of_map_file(argv[1]);
+	// check_map_if_valid(cub);
+	// _mlx_init(cub);
+
+	get_len_of_map(cub);
 	player_pos(cub);
 	mlx_hook(cub->win_cub3d, 2, 0L, key_press, cub);
 	mlx_hook(cub->win_cub3d, 6, 0L, mouse_mv, cub);
