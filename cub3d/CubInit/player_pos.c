@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   display_2d_map.c                                   :+:      :+:    :+:   */
+/*   player_pos.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mabdelou <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: ahmez-za <ahmez-za@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/06 15:00:19 by mabdelou          #+#    #+#             */
-/*   Updated: 2022/08/06 15:00:31 by mabdelou         ###   ########.fr       */
+/*   Updated: 2022/09/05 02:32:07 by ahmez-za         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,8 @@ void player_pos(s_cub *cub)
         x = 256;
         while(cub->map_buffer[a][++b])
         {
-            if(cub->map_buffer[a][b] == 'N')
+            if(cub->map_buffer[a][b] == 'N' || cub->map_buffer[a][b] == 'S' \
+                || cub->map_buffer[a][b] == 'W' || cub->map_buffer[a][b] == 'E')
             {
                 cub->ppx = x+5;
                 cub->ppy = y+5;

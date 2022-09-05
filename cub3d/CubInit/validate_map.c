@@ -6,7 +6,7 @@
 /*   By: ahmez-za <ahmez-za@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/04 00:14:45 by ahmez-za          #+#    #+#             */
-/*   Updated: 2022/09/05 01:48:55 by ahmez-za         ###   ########.fr       */
+/*   Updated: 2022/09/05 02:07:09 by ahmez-za         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -193,13 +193,23 @@ int    is_valid_char(char c)
         return (0);
 }
 
+void check_is_one_player(char c, int *players)
+{
+    if (c != '0' && c != '1' && c != ' ')
+    {
+        (*players)++;
+    }
+}
+
 void    check_map_characthers(s_cub *cub)
 {
     int i;
     int j;
     char *str;
+    int  players;
 
     i = 0;
+    players = 0;
     while (cub->map_buffer[i])
     {
         j = 0;
@@ -208,11 +218,14 @@ void    check_map_characthers(s_cub *cub)
         {
             if (!is_valid_char(str[j]))
                 ft_err("Error: unvalide character\n");
+            check_is_one_player(str[j], &players);
             j++;
         }
         i++;
     }
-    
+    printf("player == %d\n", players);
+    if (players != 1)
+        ft_err("Error: should be one player\n");
 }
 
 void    fill_the_map(t_map *head, s_cub *cub)
@@ -239,6 +252,7 @@ void    fill_the_map(t_map *head, s_cub *cub)
     }
     check_is_surrounded(cub);
     check_map_characthers(cub);
+    // check_is_one_player(cub);
 }
 
 void check_extension(char *map)
