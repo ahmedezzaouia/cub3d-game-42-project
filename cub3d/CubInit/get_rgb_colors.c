@@ -6,7 +6,7 @@
 /*   By: ahmez-za <ahmez-za@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/04 18:51:06 by mabdelou          #+#    #+#             */
-/*   Updated: 2022/09/05 21:29:48 by ahmez-za         ###   ########.fr       */
+/*   Updated: 2022/09/05 22:18:40 by ahmez-za         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,16 +40,10 @@ int	*get_rgb_color(char *str)
 	int	*num;
 
 	if (!str)
-	{
-		write(2, "there is no element_color \n", 27);
-		exit(1);
-	}
+		ft_err("there is no element_color\n");
 	num = malloc(sizeof(int) * 3);
 	if (!num)
-	{
-		write(2, "Erorr : can't allocated\n",  24);
-		exit(1);
-	}
+		ft_err("Erorr : can't allocated\n");
 	num[0] = 0;
 	num[1] = 0;
 	num[2] = 0;
