@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   _mlx_init.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mabdelou <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: ahmez-za <ahmez-za@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/18 13:58:21 by mabdelou          #+#    #+#             */
-/*   Updated: 2022/08/18 13:58:51 by mabdelou         ###   ########.fr       */
+/*   Updated: 2022/09/05 13:24:10 by ahmez-za         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,19 +21,19 @@ void	_mlx_init_2(s_cub *cub)
 	if (!cub->img_black_screen)
 		ft_error("can't get img_black_screen data");
 	cub->north_wall = mlx_xpm_file_to_image(cub->ptr,
-			"./Texture/mabdelou.xpm", &a, &b);
+			cub->north_path, &a, &b);
 	if (!cub->north_wall)
 		ft_error("can't get img_north_wall data");
 	cub->south_wall = mlx_xpm_file_to_image(cub->ptr,
-			"./Texture/ael-hayy.xpm", &a, &b);
+			cub->south_path, &a, &b);
 	if (!cub->south_wall)
 		ft_error("can't get img_south_wall data");
 	cub->west_wall = mlx_xpm_file_to_image(cub->ptr,
-			"./Texture/mamellal.xpm", &a, &b);
+			cub->west_path, &a, &b);
 	if (!cub->west_wall)
 		ft_error("can't get img_west_wall data");
 	cub->east_wall = mlx_xpm_file_to_image(cub->ptr,
-			"./Texture/oouazize.xpm", &a, &b);
+			cub->east_path, &a, &b);
 	if (!cub->east_wall)
 		ft_error("can't get img_east_wall data");
 	cub->minimap = mlx_xpm_file_to_image(cub->ptr,

@@ -6,7 +6,7 @@
 /*   By: ahmez-za <ahmez-za@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/04 00:14:45 by ahmez-za          #+#    #+#             */
-/*   Updated: 2022/09/05 02:58:27 by ahmez-za         ###   ########.fr       */
+/*   Updated: 2022/09/05 13:44:37 by ahmez-za         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,10 +82,7 @@ void check_empty_line(t_map *head)
     while (head)
     {
         if (ft_strlen_lib(head->content) == 1)
-        {
-            printf("Error: empty line\n");
-            exit(1);
-        }
+            ft_err("Error: Empty line\n");
         head = head->next;
     }
 }
@@ -224,9 +221,8 @@ void    check_map_characthers(s_cub *cub)
                 if (!str[j - 1] || !str[j + 1] || \
                     !cub->map_buffer[i - 1][j] || !cub->map_buffer[i + 1][j])
                     ft_err("Error: Map is not valide\n");
-                if (str[j] == '0' && cub->map_buffer[i + 1][j] == ' ')
+                if (str[j] == '0' && (cub->map_buffer[i + 1][j] == ' ' || str[j + 1] == ' ' || str[j - 1] == ' ' || cub->map_buffer[i - 1][j] == ' '))
                     ft_err("Error: Map is not valide\n");
-
             }
             
             j++;
