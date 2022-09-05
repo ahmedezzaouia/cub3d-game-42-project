@@ -6,13 +6,13 @@
 /*   By: ahmez-za <ahmez-za@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/05 17:19:41 by ahmez-za          #+#    #+#             */
-/*   Updated: 2022/09/05 17:23:57 by ahmez-za         ###   ########.fr       */
+/*   Updated: 2022/09/05 22:29:30 by ahmez-za         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub3d.h"
 
-void	check_is_surrounded(s_cub *cub)
+void	check_is_surrounded(t_cub *cub)
 {
 	int		i;
 	char	*str;
@@ -60,7 +60,7 @@ void	check_is_one_player(char c, int *players)
 	}
 }
 
-void	check_playes_zero(s_cub *cub, char *str, int i, int j)
+void	check_playes_zero(t_cub *cub, char *str, int i, int j)
 {
 	if (str[j] != ' ' && str[j] != '1')
 	{
@@ -74,7 +74,7 @@ void	check_playes_zero(s_cub *cub, char *str, int i, int j)
 	}
 }
 
-void	check_map_characthers(s_cub *cub)
+void	check_map_characthers(t_cub *cub)
 {
 	int		i;
 	int		j;

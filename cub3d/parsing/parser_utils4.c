@@ -6,13 +6,13 @@
 /*   By: ahmez-za <ahmez-za@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/05 17:20:39 by ahmez-za          #+#    #+#             */
-/*   Updated: 2022/09/05 18:52:35 by ahmez-za         ###   ########.fr       */
+/*   Updated: 2022/09/05 22:29:30 by ahmez-za         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub3d.h"
 
-void	fill_the_map(t_map *head, s_cub *cub)
+void	fill_the_map(t_map *head, t_cub *cub)
 {
 	int		i;
 	int		j;

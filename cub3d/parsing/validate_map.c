@@ -6,7 +6,7 @@
 /*   By: ahmez-za <ahmez-za@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/04 00:14:45 by ahmez-za          #+#    #+#             */
-/*   Updated: 2022/09/05 18:50:37 by ahmez-za         ###   ########.fr       */
+/*   Updated: 2022/09/05 22:29:30 by ahmez-za         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,7 @@ int	get_list_lk_len(t_map *head)
 	return (i);
 }
 
-void	validate_map(s_cub *cub, char *path)
+void	validate_map(t_cub *cub, char *path)
 {
 	int		reach_map;
 	t_map	*head;

@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   ray_collision.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mabdelou <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: ahmez-za <ahmez-za@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/05 20:08:43 by mabdelou          #+#    #+#             */
-/*   Updated: 2022/09/05 20:08:44 by mabdelou         ###   ########.fr       */
+/*   Updated: 2022/09/05 22:29:30 by ahmez-za         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "execution.h"
 
-void	lst_init(s_cub *cub, t_line *lst, double radien, int len)
+void	lst_init(t_cub *cub, t_line *lst, double radien, int len)
 {
 	cub->end_ray_x = len * cos(radien) + cub->ppx;
 	cub->end_ray_y = len * sin(radien) + cub->ppy;
@@ -29,7 +29,7 @@ void	lst_init(s_cub *cub, t_line *lst, double radien, int len)
 	lst->d = 75;
 }
 
-void	rays_collision(s_cub *cub, double radien, int len)
+void	rays_collision(t_cub *cub, double radien, int len)
 {
 	t_line	lst;
 

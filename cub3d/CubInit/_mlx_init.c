@@ -6,13 +6,13 @@
 /*   By: ahmez-za <ahmez-za@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/18 13:58:21 by mabdelou          #+#    #+#             */
-/*   Updated: 2022/09/05 22:27:15 by ahmez-za         ###   ########.fr       */
+/*   Updated: 2022/09/05 22:29:30 by ahmez-za         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub3d.h"
 
-void	set_images(int a, int b, s_cub *cub)
+void	set_images(int a, int b, t_cub *cub)
 {
 	cub->img_black_screen = mlx_xpm_file_to_image(cub->ptr,
 			"./texture/big_black_screen.xpm", &a, &b);
@@ -38,7 +38,7 @@ void	set_images(int a, int b, s_cub *cub)
 			"./Texture/minimap.xpm", &a, &b);
 }
 
-void	_mlx_init_2(s_cub *cub)
+void	_mlx_init_2(t_cub *cub)
 {
 	int	a;
 	int	b;
@@ -67,7 +67,7 @@ void	_mlx_init_2(s_cub *cub)
 			&cub->img[5]->bpp, &cub->img[5]->line_len, &cub->img[5]->endien);
 }
 
-void	_mlx_init_1_norm(s_cub *cub, int a, int b)
+void	_mlx_init_1_norm(t_cub *cub, int a, int b)
 {
 	if (!cub->img_empty)
 		ft_error("can't get img_empty data");
@@ -77,7 +77,7 @@ void	_mlx_init_1_norm(s_cub *cub, int a, int b)
 		ft_error("can't get img_player data");
 }
 
-void	_mlx_init_1(s_cub *cub)
+void	_mlx_init_1(t_cub *cub)
 {
 	int	a;
 	int	b;
@@ -102,7 +102,7 @@ void	_mlx_init_1(s_cub *cub)
 	_mlx_init_1_norm(cub, a, b);
 }
 
-void	_mlx_init(s_cub *cub)
+void	_mlx_init(t_cub *cub)
 {
 	get_len_of_map(cub);
 	_mlx_init_1(cub);

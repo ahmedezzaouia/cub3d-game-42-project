@@ -6,13 +6,13 @@
 /*   By: ahmez-za <ahmez-za@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/05 19:56:47 by mabdelou          #+#    #+#             */
-/*   Updated: 2022/09/05 21:11:05 by ahmez-za         ###   ########.fr       */
+/*   Updated: 2022/09/05 22:29:30 by ahmez-za         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "execution.h"
 
-void	txt_img_pixel_put1(s_cub *cub, t_img *img,
+void	txt_img_pixel_put1(t_cub *cub, t_img *img,
 		int x, int y)
 {
 	int	txt_index;
@@ -30,7 +30,7 @@ void	txt_img_pixel_put1(s_cub *cub, t_img *img,
 	}
 }
 
-void	img_pixel_put(s_cub *cub, int x, int y, int color)
+void	img_pixel_put(t_cub *cub, int x, int y, int color)
 {
 	char	*pixel;
 
@@ -42,7 +42,7 @@ void	img_pixel_put(s_cub *cub, int x, int y, int color)
 	}
 }
 
-void	txt_img_pixel_put(s_cub *cub, int x, int y)
+void	txt_img_pixel_put(t_cub *cub, int x, int y)
 {
 	int	txt_index;
 	int	index;
@@ -58,7 +58,7 @@ void	txt_img_pixel_put(s_cub *cub, int x, int y)
 	}
 }
 
-void	lst1_init_(s_cub *cub, t_ray *lst1)
+void	lst1_init_(t_cub *cub, t_ray *lst1)
 {
 	lst1->a = -1;
 	lst1->y = 32;
@@ -68,7 +68,7 @@ void	lst1_init_(s_cub *cub, t_ray *lst1)
 	lst1->map_max_raduis = cub->radien + M_PI;
 }
 
-void	lst_init_(s_cub *cub, t_line *lst, double radien, int len)
+void	lst_init_(t_cub *cub, t_line *lst, double radien, int len)
 {
 	cub->end_ray_x = len * cos(radien) + (cub->ppx / 8);
 	cub->end_ray_y = len * sin(radien) + (cub->ppy / 8);

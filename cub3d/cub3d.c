@@ -6,21 +6,21 @@
 /*   By: ahmez-za <ahmez-za@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/05 21:17:36 by ahmez-za          #+#    #+#             */
-/*   Updated: 2022/09/05 21:17:41 by ahmez-za         ###   ########.fr       */
+/*   Updated: 2022/09/05 22:31:06 by ahmez-za         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-s_cub	*cub_init_2(void)
+t_cub	*cub_init_2(void)
 {
 	int		a;
-	s_cub	*cub;
+	t_cub	*cub;
 
 	a = -1;
-	cub = malloc(sizeof(s_cub));
+	cub = malloc(sizeof(t_cub));
 	if (!cub)
-		ft_error("allocation error for 's_cub *cub'");
+		ft_error("allocation error for 't_cub *cub'");
 	cub->img = malloc(sizeof(t_img *) * 6);
 	if (!cub->img)
 		ft_error("cant allocat pointer of img struct");
@@ -33,9 +33,9 @@ s_cub	*cub_init_2(void)
 	return (cub);
 }
 
-s_cub	*cub_init(char **argv)
+t_cub	*cub_init(char **argv)
 {
-	s_cub	*cub;
+	t_cub	*cub;
 
 	(void)argv;
 	cub = cub_init_2();
@@ -54,7 +54,7 @@ s_cub	*cub_init(char **argv)
 
 int	main(int argc, char **argv)
 {
-	s_cub	*cub;
+	t_cub	*cub;
 
 	if (argc != 2)
 		ft_error("bad number of argumment");

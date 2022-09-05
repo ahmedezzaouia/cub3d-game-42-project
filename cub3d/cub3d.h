@@ -6,7 +6,7 @@
 /*   By: ahmez-za <ahmez-za@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/18 11:59:27 by mabdelou          #+#    #+#             */
-/*   Updated: 2022/09/05 22:27:44 by ahmez-za         ###   ########.fr       */
+/*   Updated: 2022/09/05 22:31:12 by ahmez-za         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ typedef struct s_img
 	int		txt_y;
 }	t_img;
 
-typedef struct t_list
+typedef struct s_cub
 {
 	t_img	**img;
 	char	*north_path;
@@ -96,7 +96,7 @@ typedef struct t_list
 	double	down_len;
 	double	right_len;
 	double	left_len;
-}  s_cub;
+}t_cub;
 
 // utilitis functions
 int		ft_strlen(char *str);
@@ -105,46 +105,46 @@ void	ft_error(char *error);
 char	*get_next_line(int fd);
 
 // parssing part
-void	validate_map(s_cub *cub, char *path);
+void	validate_map(t_cub *cub, char *path);
 void	ft_err(char *msg);
-void	fill_colors(s_cub *cub, char *new);
-void	fill_elemenets(s_cub *cub, char *new, char *join);
-void	handle_elements(char *str, s_cub *cub);
+void	fill_colors(t_cub *cub, char *new);
+void	fill_elemenets(t_cub *cub, char *new, char *join);
+void	handle_elements(char *str, t_cub *cub);
 void	check_double(t_map *head);
 void	ft_lstadd_back_min(t_map **lst, t_map *new);
-void	check_elements(t_map *head, s_cub *cub);
+void	check_elements(t_map *head, t_cub *cub);
 void	check_color(char *color);
 int		calcule_map_lines(t_map *head);
-void	check_is_surrounded(s_cub *cub);
+void	check_is_surrounded(t_cub *cub);
 int		is_valid_char(char c);
 void	check_is_one_player(char c, int *players);
-void	check_playes_zero(s_cub *cub, char *str, int i, int j);
-void	check_map_characthers(s_cub *cub);
-void	fill_the_map(t_map *head, s_cub *cub);
+void	check_playes_zero(t_cub *cub, char *str, int i, int j);
+void	check_map_characthers(t_cub *cub);
+void	fill_the_map(t_map *head, t_cub *cub);
 
 void	check_empty_line(t_map *head);
 void	check_extension(char *map);
 void	free_list(t_map *head);
-void	_mlx_init(s_cub *cub);
+void	_mlx_init(t_cub *cub);
 void	check_path_of_map_file(char *path);
-void	get_buff_of_map(s_cub *cub, char *path);
+void	get_buff_of_map(t_cub *cub, char *path);
 char	*get_texture_path(char *ptr);
-void	check_north_texture_path(s_cub *cub);
-void	check_south_texture_path(s_cub *cub);
-void	check_west_texture_path(s_cub *cub);
-void	check_east_texture_path(s_cub *cub);
+void	check_north_texture_path(t_cub *cub);
+void	check_south_texture_path(t_cub *cub);
+void	check_west_texture_path(t_cub *cub);
+void	check_east_texture_path(t_cub *cub);
 int		*get_rgb_color(char *str);
-void	check_map_if_valid(s_cub *cub);
-void	get_len_of_map(s_cub *cub);
+void	check_map_if_valid(t_cub *cub);
+void	get_len_of_map(t_cub *cub);
 
 //execution part
-void	player_pos(s_cub *cub);
-void	rays_firing(s_cub *cub);
-void	engin(s_cub *cub, int a, int b);
-void	draw_line(s_cub *cub);
-int		key_press(int keycode, s_cub *cub);
-int		mouse_mv(int x, int y, s_cub *cub);
-int		update( s_cub *cub);
-int		ft_close(s_cub *cub);
+void	player_pos(t_cub *cub);
+void	rays_firing(t_cub *cub);
+void	engin(t_cub *cub, int a, int b);
+void	draw_line(t_cub *cub);
+int		key_press(int keycode, t_cub *cub);
+int		mouse_mv(int x, int y, t_cub *cub);
+int		update( t_cub *cub);
+int		ft_close(t_cub *cub);
 
 #endif

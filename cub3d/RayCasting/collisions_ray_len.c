@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   collisiont_ray_len.c                               :+:      :+:    :+:   */
+/*   collisions_ray_len.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mabdelou <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: ahmez-za <ahmez-za@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/05 17:04:20 by mabdelou          #+#    #+#             */
-/*   Updated: 2022/09/05 17:04:22 by mabdelou         ###   ########.fr       */
+/*   Updated: 2022/09/05 22:29:30 by ahmez-za         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "execution.h"
 
-int	ray_fire(s_cub *cub, t_line *lst)
+int	ray_fire(t_cub *cub, t_line *lst)
 {
 	while (lst->pixels--)
 	{
@@ -32,7 +32,7 @@ int	ray_fire(s_cub *cub, t_line *lst)
 	return (0);
 }
 
-int	check_directions(s_cub *cub, double radian)
+int	check_directions(t_cub *cub, double radian)
 {
 	t_line	lst;
 
@@ -44,7 +44,7 @@ int	check_directions(s_cub *cub, double radian)
 	return (1);
 }
 
-int	collisiont_ray_len(s_cub *cub, double radian, int len)
+int	collisiont_ray_len(t_cub *cub, double radian, int len)
 {
 	t_line	lst;
 

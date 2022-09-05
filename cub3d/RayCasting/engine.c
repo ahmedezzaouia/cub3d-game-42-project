@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   engine.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mabdelou <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: ahmez-za <ahmez-za@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/08 12:17:19 by mabdelou          #+#    #+#             */
-/*   Updated: 2022/08/08 12:17:20 by mabdelou         ###   ########.fr       */
+/*   Updated: 2022/09/05 22:29:30 by ahmez-za         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "execution.h"
 
-void	celing_part(s_cub *cub, int a)
+void	celing_part(t_cub *cub, int a)
 {
 	(void) cub;
 	cub->wall_px = (512 / cub->ray_len[a]) * 255;
@@ -22,7 +22,7 @@ void	celing_part(s_cub *cub, int a)
 		img_pixel_put(cub, a, cub->ray_pixels, 0x484B47);
 }
 
-void	wall_part_2(s_cub *cub, int txt_x, int txt_y, int a)
+void	wall_part_2(t_cub *cub, int txt_x, int txt_y, int a)
 {
 	if (cub->color_of_wall[a] == 16777215)
 	{
@@ -50,7 +50,7 @@ void	wall_part_2(s_cub *cub, int txt_x, int txt_y, int a)
 	}
 }
 
-void	wall_part(s_cub *cub, int a)
+void	wall_part(t_cub *cub, int a)
 {
 	int		loop;
 	int		txt_y;
@@ -76,14 +76,14 @@ void	wall_part(s_cub *cub, int a)
 	}
 }
 
-void	floor_part(s_cub *cub, int a)
+void	floor_part(t_cub *cub, int a)
 {
 	(void) cub;
 	while (++cub->ray_pixels < 900)
 		img_pixel_put(cub, a, cub->ray_pixels, 0x3A6F7E);
 }
 
-void	engin(s_cub *cub, int a, int b)
+void	engin(t_cub *cub, int a, int b)
 {
 	(void) b;
 	mlx_put_image_to_window(cub->ptr, cub->win_cub3d,

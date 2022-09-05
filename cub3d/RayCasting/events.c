@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   events.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mabdelou <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: ahmez-za <ahmez-za@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/05 18:00:30 by mabdelou          #+#    #+#             */
-/*   Updated: 2022/09/05 18:00:31 by mabdelou         ###   ########.fr       */
+/*   Updated: 2022/09/05 22:29:30 by ahmez-za         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "execution.h"
 
-int	ft_close(s_cub *cub)
+int	ft_close(t_cub *cub)
 {
 	(void) cub;
 	write(1, "cub3D exited successful\n", 24);
@@ -20,7 +20,7 @@ int	ft_close(s_cub *cub)
 	return (0);
 }
 
-void	key_press_2(int keycode, s_cub *cub)
+void	key_press_2(int keycode, t_cub *cub)
 {
 	if ((keycode == 13 || keycode == 126)
 		&& collisiont_ray_len(cub, cub->radien, 10))
@@ -47,7 +47,7 @@ void	key_press_2(int keycode, s_cub *cub)
 	}
 }
 
-int	key_press(int keycode, s_cub *cub)
+int	key_press(int keycode, t_cub *cub)
 {
 	if (keycode == 124)
 	{
@@ -65,7 +65,7 @@ int	key_press(int keycode, s_cub *cub)
 	return (0);
 }
 
-int	mouse_mv(int x, int y, s_cub *cub)
+int	mouse_mv(int x, int y, t_cub *cub)
 {
 	static int	old_x = -1;
 
@@ -89,7 +89,7 @@ int	mouse_mv(int x, int y, s_cub *cub)
 	return (0);
 }
 
-int	update( s_cub *cub)
+int	update( t_cub *cub)
 {
 	static int	a = -1;
 

@@ -6,14 +6,14 @@
 /*   By: ahmez-za <ahmez-za@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/05 21:20:07 by ahmez-za          #+#    #+#             */
-/*   Updated: 2022/09/05 21:20:08 by ahmez-za         ###   ########.fr       */
+/*   Updated: 2022/09/05 22:28:37 by ahmez-za         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PARSSING_H
 # define PARSSING_H
 
-typedef struct s_list
+typedef struct t_list
 {
 	int		a;
 	int		b;

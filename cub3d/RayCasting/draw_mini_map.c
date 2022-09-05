@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   draw_mini_map.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mabdelou <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: ahmez-za <ahmez-za@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/05 17:48:23 by mabdelou          #+#    #+#             */
-/*   Updated: 2022/09/05 17:48:26 by mabdelou         ###   ########.fr       */
+/*   Updated: 2022/09/05 22:29:30 by ahmez-za         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "execution.h"
 
-int	player_view_2(s_cub *cub, t_line *lst, int x, int y)
+int	player_view_2(t_cub *cub, t_line *lst, int x, int y)
 {
 	if (cub->map_buffer[lst->a][lst->b] != '1'
 		&& cub->map_buffer[lst->a][lst->b] != ' '
@@ -27,7 +27,7 @@ int	player_view_2(s_cub *cub, t_line *lst, int x, int y)
 	return (0);
 }
 
-void	player_view(s_cub *cub, double radien, int len)
+void	player_view(t_cub *cub, double radien, int len)
 {
 	t_line	lst;
 	double	x;
@@ -53,7 +53,7 @@ void	player_view(s_cub *cub, double radien, int len)
 	}
 }
 
-void	mapt_ray_collision(s_cub *cub, double radien, int len)
+void	mapt_ray_collision(t_cub *cub, double radien, int len)
 {
 	t_line	lst;
 	double	x;
@@ -77,7 +77,7 @@ void	mapt_ray_collision(s_cub *cub, double radien, int len)
 	}
 }
 
-void	black_mini_map(s_cub *cub)
+void	black_mini_map(t_cub *cub)
 {
 	int	a;
 	int	b;
@@ -91,7 +91,7 @@ void	black_mini_map(s_cub *cub)
 	}
 }
 
-void	draw_line(s_cub *cub)
+void	draw_line(t_cub *cub)
 {
 	t_ray	lst1;
 

@@ -6,7 +6,7 @@
 /*   By: ahmez-za <ahmez-za@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/05 17:18:47 by ahmez-za          #+#    #+#             */
-/*   Updated: 2022/09/05 17:19:02 by ahmez-za         ###   ########.fr       */
+/*   Updated: 2022/09/05 22:29:30 by ahmez-za         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ void	check_empty_line(t_map *head)
 	}
 }
 
-void	check_elements(t_map *head, s_cub *cub)
+void	check_elements(t_map *head, t_cub *cub)
 {
 	int	i;
 

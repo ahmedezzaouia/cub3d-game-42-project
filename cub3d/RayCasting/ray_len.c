@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   ray_len.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mabdelou <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: ahmez-za <ahmez-za@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/05 20:12:05 by mabdelou          #+#    #+#             */
-/*   Updated: 2022/09/05 20:12:06 by mabdelou         ###   ########.fr       */
+/*   Updated: 2022/09/05 22:29:30 by ahmez-za         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "execution.h"
 
-void	ray_len_3(s_cub *cub, t_line *lst, int c)
+void	ray_len_3(t_cub *cub, t_line *lst, int c)
 {
 	if (((int)(lst->begin_y + 114)) % 256 == 0
 		|| (int)(lst->begin_y + 113) % 256 == 0)
@@ -22,7 +22,7 @@ void	ray_len_3(s_cub *cub, t_line *lst, int c)
 		cub->ray_hit_pos[c] = ((int)lst->begin_y + 113) % 256;
 }
 
-void	ray_len_2(s_cub *cub, t_line *lst, int c)
+void	ray_len_2(t_cub *cub, t_line *lst, int c)
 {
 	if ((int)(lst->begin_y + 113) % 256 == 0
 		&& ((int)(lst->begin_x + 113)) % 256 != 0
@@ -42,7 +42,7 @@ void	ray_len_2(s_cub *cub, t_line *lst, int c)
 		cub->color_of_wall[c] = 16777215;
 }
 
-void	ray_len(s_cub *cub, t_line *lst, double radien)
+void	ray_len(t_cub *cub, t_line *lst, double radien)
 {
 	static int	c = -1;
 

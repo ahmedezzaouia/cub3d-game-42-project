@@ -6,13 +6,13 @@
 /*   By: ahmez-za <ahmez-za@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/06 15:00:19 by mabdelou          #+#    #+#             */
-/*   Updated: 2022/09/05 21:22:28 by ahmez-za         ###   ########.fr       */
+/*   Updated: 2022/09/05 22:29:30 by ahmez-za         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub3d.h"
 
-void	player_pos(s_cub *cub)
+void	player_pos(t_cub *cub)
 {
 	int	a;
 	int	b;

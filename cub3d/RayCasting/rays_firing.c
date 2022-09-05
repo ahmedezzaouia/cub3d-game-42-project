@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   rays_firing.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mabdelou <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: ahmez-za <ahmez-za@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/05 20:25:39 by mabdelou          #+#    #+#             */
-/*   Updated: 2022/09/05 20:25:41 by mabdelou         ###   ########.fr       */
+/*   Updated: 2022/09/05 22:29:30 by ahmez-za         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "execution.h"
 
-void	lst1_init(s_cub *cub, t_ray *lst1)
+void	lst1_init(t_cub *cub, t_ray *lst1)
 {
 	lst1->a = -1;
 	lst1->y = 256;
@@ -22,7 +22,7 @@ void	lst1_init(s_cub *cub, t_ray *lst1)
 	lst1->map_max_raduis = cub->radien + M_PI;
 }
 
-void	rays_firing(s_cub *cub)
+void	rays_firing(t_cub *cub)
 {
 	t_ray	lst1;
 

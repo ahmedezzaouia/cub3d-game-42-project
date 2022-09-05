@@ -6,7 +6,7 @@
 /*   By: ahmez-za <ahmez-za@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/05 17:17:39 by ahmez-za          #+#    #+#             */
-/*   Updated: 2022/09/05 17:18:19 by ahmez-za         ###   ########.fr       */
+/*   Updated: 2022/09/05 22:29:30 by ahmez-za         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	ft_err(char *msg)
 	exit(1);
 }
 
-void	fill_colors(s_cub *cub, char *new)
+void	fill_colors(t_cub *cub, char *new)
 {
 	if (new[0] == 'F')
 	{
@@ -30,7 +30,7 @@ void	fill_colors(s_cub *cub, char *new)
 	}
 }
 
-void	fill_elemenets(s_cub *cub, char *new, char *join)
+void	fill_elemenets(t_cub *cub, char *new, char *join)
 {
 	if (new[0] == 'N' && new[1] == 'O')
 		cub->north_path = ft_strdup(join);
@@ -42,7 +42,7 @@ void	fill_elemenets(s_cub *cub, char *new, char *join)
 		cub->east_path = ft_strdup(join);
 }
 
-void	handle_elements(char *str, s_cub *cub)
+void	handle_elements(char *str, t_cub *cub)
 {
 	char	*join;
 	char	*new;
