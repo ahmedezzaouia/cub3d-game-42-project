@@ -6,7 +6,7 @@
 /*   By: ahmez-za <ahmez-za@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/18 11:59:27 by mabdelou          #+#    #+#             */
-/*   Updated: 2022/09/05 00:39:37 by ahmez-za         ###   ########.fr       */
+/*   Updated: 2022/09/05 17:25:26 by ahmez-za         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,6 +108,25 @@ char	*get_next_line(int fd);
 
 // parssing part
 void	validate_map(s_cub *cub, char *path);
+void	ft_err(char *msg);
+void	fill_colors(s_cub *cub, char *new);
+void	fill_elemenets(s_cub *cub, char *new, char *join);
+void	handle_elements(char *str, s_cub *cub);
+void	check_double(t_map *head);
+void	ft_lstadd_back_min(t_map **lst, t_map *new);
+void	check_elements(t_map *head, s_cub *cub);
+void	check_color(char *color);
+int		calcule_map_lines(t_map *head);
+void	check_is_surrounded(s_cub *cub);
+int		is_valid_char(char c);
+void	check_is_one_player(char c, int *players);
+void	check_playes_zero(s_cub *cub, char *str, int i, int j);
+void	check_map_characthers(s_cub *cub);
+void	fill_the_map(t_map *head, s_cub *cub);
+
+void	check_empty_line(t_map *head);
+void	check_extension(char *map);
+void	free_list(t_map *head);
 void	_mlx_init(s_cub *cub);
 void	check_path_of_map_file(char *path);
 void	get_buff_of_map(s_cub *cub, char *path);
