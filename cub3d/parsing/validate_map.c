@@ -6,7 +6,7 @@
 /*   By: ahmez-za <ahmez-za@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/04 00:14:45 by ahmez-za          #+#    #+#             */
-/*   Updated: 2022/09/05 18:20:45 by ahmez-za         ###   ########.fr       */
+/*   Updated: 2022/09/05 18:50:37 by ahmez-za         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,11 +28,11 @@ void	init_linked_list(char *path, t_map **head, int reach_map)
 	char	*trim;
 	char	*str;
 
-	reach_map = 0;
 	fd = open (path, O_RDONLY);
 	if (fd == -1)
 		ft_err("Error: Can't open file\n");
-	while ((str = get_next_line(fd)) != NULL)
+	str = get_next_line(fd);
+	while ((str) != NULL)
 	{
 		trim = ft_strtrim(str, " ");
 		if (trim[0] == '1')
@@ -41,12 +41,27 @@ void	init_linked_list(char *path, t_map **head, int reach_map)
 		{
 			free(str);
 			free(trim);
+			str = get_next_line(fd);
 			continue ;
 		}
 		add_new_node(head, str);
 		free(trim);
+		str = get_next_line(fd);
 	}
 	close(fd);
+}
+
+int	get_list_lk_len(t_map *head)
+{
+	int	i;
+
+	i = 0;
+	while (head)
+	{
+		head = head->next;
+		i++;
+	}
+	return (i);
 }
 
 void	validate_map(s_cub *cub, char *path)
@@ -59,7 +74,9 @@ void	validate_map(s_cub *cub, char *path)
 	check_extension(path);
 	init_linked_list(path, &head, reach_map);
 	if (!head)
-		ft_err("Error: map is not filled correctly\n");
+		ft_err("Error: No Data\n");
+	if (get_list_lk_len(head) == 6)
+		ft_err("Error: the map not found\n");
 	check_empty_line(head);
 	check_double(head);
 	check_elements(head, cub);
