@@ -6,7 +6,7 @@
 /*   By: ahmez-za <ahmez-za@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/04 00:14:45 by ahmez-za          #+#    #+#             */
-/*   Updated: 2022/09/05 13:44:37 by ahmez-za         ###   ########.fr       */
+/*   Updated: 2022/09/05 15:07:23 by ahmez-za         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,28 @@ void     handle_elements(char *str, s_cub *cub)
     free(join);
     free(new);
     close(fd);
+}
+
+
+void    check_double(t_map *head)
+{
+    int i;
+    char *trim;
+    
+    i = 0;
+    while (head)
+    {
+        trim = ft_strtrim(head->content, " ");
+        if (trim[0] == '1')
+            break ;
+       head = head->next;
+       i++;
+       free(trim);
+    }
+    free(trim);
+    if (i > 6)
+        ft_err("Error: double lines\n");
+    
 }
 
 void	ft_lstadd_back_min(t_map **lst, t_map *new)
@@ -329,6 +351,7 @@ void validate_map(s_cub *cub, char *path)
         exit(1);
     }
     check_empty_line(head);
+    check_double(head);
     check_elements(head, cub);
     check_color(cub->floor_color);
     check_color(cub->ceilling_color);
