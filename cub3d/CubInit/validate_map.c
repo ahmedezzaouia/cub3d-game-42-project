@@ -6,7 +6,7 @@
 /*   By: ahmez-za <ahmez-za@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/04 00:14:45 by ahmez-za          #+#    #+#             */
-/*   Updated: 2022/09/05 02:07:09 by ahmez-za         ###   ########.fr       */
+/*   Updated: 2022/09/05 02:58:27 by ahmez-za         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -219,6 +219,16 @@ void    check_map_characthers(s_cub *cub)
             if (!is_valid_char(str[j]))
                 ft_err("Error: unvalide character\n");
             check_is_one_player(str[j], &players);
+            if (str[j] != ' ' && str[j] != '1')
+            {    
+                if (!str[j - 1] || !str[j + 1] || \
+                    !cub->map_buffer[i - 1][j] || !cub->map_buffer[i + 1][j])
+                    ft_err("Error: Map is not valide\n");
+                if (str[j] == '0' && cub->map_buffer[i + 1][j] == ' ')
+                    ft_err("Error: Map is not valide\n");
+
+            }
+            
             j++;
         }
         i++;
