@@ -6,7 +6,7 @@
 /*   By: ahmez-za <ahmez-za@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/18 13:58:21 by mabdelou          #+#    #+#             */
-/*   Updated: 2022/09/05 13:24:10 by ahmez-za         ###   ########.fr       */
+/*   Updated: 2022/09/05 21:30:05 by ahmez-za         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@ void	_mlx_init_2(s_cub *cub)
 {
 	int	a;
 	int	b;
+
 	cub->img_black_screen = mlx_xpm_file_to_image(cub->ptr,
 			"./texture/big_black_screen.xpm", &a, &b);
 	if (!cub->img_black_screen)
@@ -40,7 +41,8 @@ void	_mlx_init_2(s_cub *cub)
 			"./Texture/minimap.xpm", &a, &b);
 	if (!cub->minimap)
 		ft_error("can't get img_minimap data");
-	cub->img[0]->addr = mlx_get_data_addr(cub->img_of_screen, &cub->img[0]->bpp, &cub->img[0]->line_len, &cub->img[0]->endien);
+	cub->img[0]->addr = mlx_get_data_addr(cub->img_of_screen, &cub->img[0]->bpp,\
+			&cub->img[0]->line_len, &cub->img[0]->endien);
 	cub->img[1]->addr = mlx_get_data_addr(cub->east_wall,&cub->img[1]->bpp,&cub->img[1]->line_len,&cub->img[1]->endien);
 	cub->img[2]->addr = mlx_get_data_addr(cub->west_wall,&cub->img[2]->bpp,&cub->img[2]->line_len,&cub->img[2]->endien);
 	cub->img[3]->addr = mlx_get_data_addr(cub->south_wall,&cub->img[3]->bpp,&cub->img[3]->line_len,&cub->img[3]->endien);
@@ -54,11 +56,11 @@ void	_mlx_init_1(s_cub *cub)
 	int	b;
 
 	cub->ptr = mlx_init();
-    cub->win_cub3d = mlx_new_window(cub->ptr,1500,900, "Cub3D");
-	if(!cub->win_cub3d)
+    cub->win_cub3d = mlx_new_window(cub->ptr, 1500,900, "Cub3D");
+	if (!cub->win_cub3d)
 		ft_error("cant make cub3d_win");
 	cub->img_of_screen = mlx_new_image(cub->ptr,1500,900);
-    if(!cub->img_of_screen)
+    if (!cub->img_of_screen)
         ft_error("can't make img_of_screen");
 	cub->img_wall = mlx_xpm_file_to_image(cub->ptr, "./Texture/wall.xpm", &a, &b);
 	if (!cub->img_wall)

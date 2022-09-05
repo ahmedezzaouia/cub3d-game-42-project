@@ -6,7 +6,7 @@
 /*   By: ahmez-za <ahmez-za@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/18 11:59:27 by mabdelou          #+#    #+#             */
-/*   Updated: 2022/09/05 17:25:26 by ahmez-za         ###   ########.fr       */
+/*   Updated: 2022/09/05 21:19:49 by ahmez-za         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,17 +34,19 @@ typedef struct s_map
 	struct s_map	*next;
 }	t_map;
 
-typedef struct t_img
+typedef struct s_img
 {
 	char	*addr;
 	int		line_len;
 	int		bpp;
 	int		endien;
-}	s_img;
+	int		txt_x;
+	int		txt_y;
+}	t_img;
 
 typedef struct t_list
 {
-	s_img	**img;
+	t_img	**img;
 	char	*north_path;
 	char	*south_path;
 	char	*west_path;
@@ -66,7 +68,7 @@ typedef struct t_list
 	int		x_pixel;
 	int		y_pixel;
 	int		a_map_buf;
-	int 	*b_map_buf;
+	int		*b_map_buf;
 	int		px;
 	int		py;
 	int		ppx;
@@ -94,14 +96,10 @@ typedef struct t_list
 	double	down_len;
 	double	right_len;
 	double	left_len;
-
-}	s_cub;
+}  s_cub;
 
 // utilitis functions
 int		ft_strlen(char *str);
-// int		ft_strncmp2(char *S1, char *S2, int num);
-// int		ft_strcmp(char *S1, char *S2);
-// char	*ft_strjoin(char *s1, char *s2);
 double	ft_to_radien(int degree);
 void	ft_error(char *error);
 char	*get_next_line(int fd);
@@ -137,7 +135,7 @@ void	check_west_texture_path(s_cub *cub);
 void	check_east_texture_path(s_cub *cub);
 int		*get_rgb_color(char *str);
 void	check_map_if_valid(s_cub *cub);
-void	get_len_of_map(s_cub * cub);
+void	get_len_of_map(s_cub *cub);
 
 //execution part
 void	player_pos(s_cub *cub);
@@ -148,7 +146,5 @@ int		key_press(int keycode, s_cub *cub);
 int		mouse_mv(int x, int y, s_cub *cub);
 int		update( s_cub *cub);
 int		ft_close(s_cub *cub);
-
-
 
 #endif

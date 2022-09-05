@@ -6,7 +6,7 @@
 /*   By: ahmez-za <ahmez-za@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/17 21:52:26 by ahmez-za          #+#    #+#             */
-/*   Updated: 2022/09/04 19:02:17 by ahmez-za         ###   ########.fr       */
+/*   Updated: 2022/09/05 21:08:43 by ahmez-za         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,6 @@
 # include<stdlib.h>
 # include<unistd.h>
 # include<fcntl.h>
-
 
 void	ft_bzero(void *s, size_t n);
 int		ft_isalnum(int c);

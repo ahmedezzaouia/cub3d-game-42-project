@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mabdelou <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: ahmez-za <ahmez-za@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/27 17:44:58 by mabdelou          #+#    #+#             */
-/*   Updated: 2021/12/01 15:28:57 by mabdelou         ###   ########.fr       */
+/*   Updated: 2022/09/05 21:25:07 by ahmez-za         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +73,7 @@ char	*getv2(char *newstr, int fd)
 	int		words;
 
 	words = 1;
-	buffer = malloc(sizeof(char) *  2);
+	buffer = malloc(sizeof(char) * 2);
 	if (!buffer)
 		return (NULL);
 	while (return_trorfo(newstr) && words != 0)

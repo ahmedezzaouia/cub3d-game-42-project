@@ -6,54 +6,53 @@
 /*   By: ahmez-za <ahmez-za@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/04 18:51:06 by mabdelou          #+#    #+#             */
-/*   Updated: 2022/09/04 23:26:06 by ahmez-za         ###   ########.fr       */
+/*   Updated: 2022/09/05 21:29:48 by ahmez-za         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub3d.h"
 
-int *get_rgb_color_2(char *str, int *num)
+int	*get_rgb_color_2(char *str, int *num)
 {
-    int a;
-    int b;
+	int	a;
+	int	b;
 
-    a = 1;
-    b = 0;
-    while(str[++a])
-    {
-        if(str[a] == ',' || str[a] == '\n')
-        {
-            num[b] /= 10;
-            
-            ++b;
-        }
-        if(str[a] > 47 && str[a] < 58)
-        {
-            num[b] += str[a] - 48;
-            num[b] *= 10;
-        }
-    }
-    return (num);
+	a = 1;
+	b = 0;
+	while (str[++a])
+	{
+		if (str[a] == ',' || str[a] == '\n')
+		{
+			num[b] /= 10;
+			++b;
+		}
+		if (str[a] > 47 && str[a] < 58)
+		{
+		num[b] += str[a] - 48;
+		num[b] *= 10;
+		}
+	}
+	return (num);
 }
 
-int *get_rgb_color(char *str)
+int	*get_rgb_color(char *str)
 {
-    int *num;
+	int	*num;
 
-    if(!str)
-    {
-        write(2,"there is no element_color \n",27);
-        exit(1);
-    }
-    num = malloc(sizeof(int) * 3);
-    if(!num)
-    {
-        write(2,"Erorr : can't allocated\n",24);
-        exit(1);
-    }
-    num[0] = 0;
-    num[1] = 0;
-    num[2] = 0;
-    num = get_rgb_color_2(str,num);
-    return (num);
+	if (!str)
+	{
+		write(2, "there is no element_color \n", 27);
+		exit(1);
+	}
+	num = malloc(sizeof(int) * 3);
+	if (!num)
+	{
+		write(2, "Erorr : can't allocated\n",  24);
+		exit(1);
+	}
+	num[0] = 0;
+	num[1] = 0;
+	num[2] = 0;
+	num = get_rgb_color_2(str, num);
+	return (num);
 }
