@@ -6,7 +6,7 @@
 /*   By: ahmez-za <ahmez-za@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/18 11:59:27 by mabdelou          #+#    #+#             */
-/*   Updated: 2022/09/04 19:18:09 by ahmez-za         ###   ########.fr       */
+/*   Updated: 2022/09/05 00:39:37 by ahmez-za         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,7 +107,8 @@ void	ft_error(char *error);
 char	*get_next_line(int fd);
 
 // parssing part
-// void	_mlx_init(s_cub *cub);
+void	validate_map(s_cub *cub, char *path);
+void	_mlx_init(s_cub *cub);
 void	check_path_of_map_file(char *path);
 void	get_buff_of_map(s_cub *cub, char *path);
 char	*get_texture_path(char *ptr);
@@ -128,5 +129,7 @@ int		key_press(int keycode, s_cub *cub);
 int		mouse_mv(int x, int y, s_cub *cub);
 int		update( s_cub *cub);
 int		ft_close(s_cub *cub);
+
+
 
 #endif

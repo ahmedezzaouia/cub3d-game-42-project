@@ -57,8 +57,25 @@ int main (int argc,char **argv)
 	
 	// check_path_of_map_file(argv[1]);
 	// check_map_if_valid(cub);
-	// _mlx_init(cub);
+	validate_map(cub, argv[1]);
 
+	
+	printf("south = %s\n", cub->south_path);
+	printf("west = %s\n", cub->west_path);
+	printf("nord = %s\n", cub->north_path);
+	printf("est = %s\n", cub->east_path);
+	printf("flour = %s\n", cub->floor_color);
+	printf("ceille = %s\n", cub->ceilling_color);
+
+
+	int i = 0;
+	while (cub->map_buffer[i])
+	{
+		printf("%s\n", cub->map_buffer[i]);
+		i++;
+	}
+	
+	_mlx_init(cub);
 	get_len_of_map(cub);
 	player_pos(cub);
 	mlx_hook(cub->win_cub3d, 2, 0L, key_press, cub);
