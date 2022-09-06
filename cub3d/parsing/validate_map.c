@@ -6,7 +6,7 @@
 /*   By: ahmez-za <ahmez-za@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/04 00:14:45 by ahmez-za          #+#    #+#             */
-/*   Updated: 2022/09/06 10:07:01 by ahmez-za         ###   ########.fr       */
+/*   Updated: 2022/09/06 18:00:33 by ahmez-za         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,6 +85,6 @@ void	validate_map(t_cub *cub, char *path)
 	check_color(cub->floor_color, cub, 1);
 	check_color(cub->ceilling_color, cub, 0);
 	fill_the_map(head, cub);
-	free_list(head);
+	// free_list(head);
 	printf("\x1B[32m valid map\n");
 }

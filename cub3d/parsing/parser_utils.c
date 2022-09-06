@@ -6,7 +6,7 @@
 /*   By: ahmez-za <ahmez-za@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/05 17:17:39 by ahmez-za          #+#    #+#             */
-/*   Updated: 2022/09/06 10:41:29 by ahmez-za         ###   ########.fr       */
+/*   Updated: 2022/09/06 18:04:08 by ahmez-za         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,18 +20,25 @@ void	ft_err(char *msg)
 
 void	fill_colors(t_cub *cub, char *new)
 {
+	char	*color;
+
 	if (new[0] == 'F')
 	{
 		if (cub->floor_color)
 			ft_err("Error: can't get floor color\n");
-		cub->floor_color = ft_strdup(ft_strtrim(new + 2, " "));
+		color = ft_strtrim(new + 2, " ");
+		cub->floor_color = ft_strdup(color);
+		free(color);
 	}
 	else if (new[0] == 'C')
 	{	
 		if (cub->ceilling_color)
 			ft_err("Error: can't get ceilling color\n");
-		cub->ceilling_color = ft_strdup(ft_strtrim(new + 2, " "));
+		color = ft_strtrim(new + 2, " ");
+		cub->ceilling_color = ft_strdup(color);
+		free(color);
 	}
+	free(new);
 }
 
 void	fill_elemenets(t_cub *cub, char *new, char *join)
@@ -51,6 +58,7 @@ void	handle_elements(char *str, t_cub *cub)
 	char	*join;
 	char	*new;
 	int		fd;
+	char	*xpm;
 
 	new = ft_strtrim(str, " \n  ");
 	if (new[0] == 'F' || new[0] == 'C')
@@ -58,12 +66,13 @@ void	handle_elements(char *str, t_cub *cub)
 		fill_colors(cub, new);
 		return ;
 	}
-	join = ft_strjoin(new + 2, ft_strdup(".xpm"));
-	join = ft_strtrim(join, " \n  ");
+	xpm = ft_strjoin(new + 2, ".xpm");
+	join = ft_strtrim(xpm, " \n  ");
 	fd = open(join, O_RDONLY);
 	if (fd == -1)
 		ft_err("image path not found\n");
 	fill_elemenets(cub, new, join);
+	free(xpm);
 	free(join);
 	free(new);
 	close(fd);

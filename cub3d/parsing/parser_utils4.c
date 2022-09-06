@@ -6,7 +6,7 @@
 /*   By: ahmez-za <ahmez-za@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/05 17:20:39 by ahmez-za          #+#    #+#             */
-/*   Updated: 2022/09/06 11:51:33 by ahmez-za         ###   ########.fr       */
+/*   Updated: 2022/09/06 17:42:25 by ahmez-za         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,8 @@ void	free_list(t_map *head)
 	while (head)
 	{
 		temp = head;
-		head = head->next;
 		free(temp);
+		temp = NULL;
+		head = head->next;
 	}
 }

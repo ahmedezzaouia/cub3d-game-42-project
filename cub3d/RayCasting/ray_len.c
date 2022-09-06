@@ -6,7 +6,7 @@
 /*   By: ahmez-za <ahmez-za@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/05 20:12:05 by mabdelou          #+#    #+#             */
-/*   Updated: 2022/09/05 22:29:30 by ahmez-za         ###   ########.fr       */
+/*   Updated: 2022/09/06 17:52:05 by ahmez-za         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,6 +66,7 @@ void	ray_len(t_cub *cub, t_line *lst, double radien)
 	else if (((int)(lst->begin_y + 114)) % 256 == 0
 		&& cub->color_of_wall[c - 1] == 16777215)
 		cub->color_of_wall[c] = 16777215;
-	ray_len_2(cub, lst, c);
+	else
+		ray_len_2(cub, lst, c);
 	ray_len_3(cub, lst, c);
 }

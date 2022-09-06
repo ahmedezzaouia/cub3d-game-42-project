@@ -6,7 +6,7 @@
 /*   By: ahmez-za <ahmez-za@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/05 17:18:47 by ahmez-za          #+#    #+#             */
-/*   Updated: 2022/09/06 09:48:42 by ahmez-za         ###   ########.fr       */
+/*   Updated: 2022/09/06 17:56:06 by ahmez-za         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,12 +76,12 @@ void	check_color(char *color, t_cub *cub, int is_floor)
 		else
 			cub->c_rgb[i] = ft_atoi(split[i]);
 		if (ft_atoi(split[i]) > 255 || ft_atoi(split[i]) < 0)
-		{
-			printf("\x1B[31m Error color numbers range\n");
-			exit(1);
-		}
+			ft_err("Error color numbers range\n");
 		i++;
 	}
+	i = 0;
+	while (split[i])
+		free(split[i++]);
 }
 
 int	calcule_map_lines(t_map *head)

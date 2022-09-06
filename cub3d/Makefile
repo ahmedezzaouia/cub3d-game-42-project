@@ -6,12 +6,12 @@
 #    By: ahmez-za <ahmez-za@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/04 19:08:22 by ahmez-za          #+#    #+#              #
-#    Updated: 2022/09/06 10:31:29 by ahmez-za         ###   ########.fr        #
+#    Updated: 2022/09/06 17:34:30 by ahmez-za         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 
-CC = cc -g -fsanitize=address -Wall -Wextra -Werror -lmlx -framework OpenGL -framework AppKit
+CC = cc -Wall -Wextra -Werror -lmlx -framework OpenGL -framework AppKit
 
 RM = rm -f
 NAME = cub3D
