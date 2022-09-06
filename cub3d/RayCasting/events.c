@@ -6,7 +6,7 @@
 /*   By: ahmez-za <ahmez-za@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/05 18:00:30 by mabdelou          #+#    #+#             */
-/*   Updated: 2022/09/05 22:29:30 by ahmez-za         ###   ########.fr       */
+/*   Updated: 2022/09/06 16:10:00 by ahmez-za         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,7 +96,7 @@ int	update( t_cub *cub)
 	while (++a % 20 == 0)
 	{
 		rays_firing(cub);
-		engin(cub, -1, 0);
+		engin(cub, 1, 0);
 		draw_line(cub);
 		if (a == 1000)
 			a = -1;

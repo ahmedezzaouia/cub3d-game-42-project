@@ -6,7 +6,7 @@
 /*   By: ahmez-za <ahmez-za@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/05 17:19:41 by ahmez-za          #+#    #+#             */
-/*   Updated: 2022/09/06 12:00:02 by ahmez-za         ###   ########.fr       */
+/*   Updated: 2022/09/06 16:09:13 by ahmez-za         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,9 +70,9 @@ void	check_playes_zero(t_cub *cub, char *str, int i, int j)
 {
 	if (str[j] != ' ' && str[j] != '1' && str[j] != '\t')
 	{
-		if (((int)ft_strlen_lib(cub->map_buffer[i + 1]) <= j || (int)ft_strlen_lib(cub->map_buffer[i - 1]) <= j))
+		if (((int)ft_strlen_lib(cub->map_buffer[i + 1]) <= j || \
+			(int)ft_strlen_lib(cub->map_buffer[i - 1]) <= j))
 			ft_err("Error: Map is not valide1111\n");
-		// if (!str[j - 1] || !str[j + 1] || cub->map_buffer[i - 1][j] || cub->map_buffer[i + 1][j])
 		if (str[j] == '0' && (cub->map_buffer[i + 1][j] == ' ' || \
 			str[j + 1] == ' ' || \
 			str[j - 1] == ' ' || cub->map_buffer[i - 1][j] == ' '))
