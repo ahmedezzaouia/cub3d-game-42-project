@@ -6,7 +6,7 @@
 /*   By: ahmez-za <ahmez-za@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/05 17:18:47 by ahmez-za          #+#    #+#             */
-/*   Updated: 2022/09/06 17:56:06 by ahmez-za         ###   ########.fr       */
+/*   Updated: 2022/09/06 18:31:08 by ahmez-za         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,6 +82,7 @@ void	check_color(char *color, t_cub *cub, int is_floor)
 	i = 0;
 	while (split[i])
 		free(split[i++]);
+	free(split);
 }
 
 int	calcule_map_lines(t_map *head)

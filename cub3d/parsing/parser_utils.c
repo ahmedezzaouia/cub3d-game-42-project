@@ -6,7 +6,7 @@
 /*   By: ahmez-za <ahmez-za@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/05 17:17:39 by ahmez-za          #+#    #+#             */
-/*   Updated: 2022/09/06 18:04:08 by ahmez-za         ###   ########.fr       */
+/*   Updated: 2022/09/06 18:29:26 by ahmez-za         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,16 +27,14 @@ void	fill_colors(t_cub *cub, char *new)
 		if (cub->floor_color)
 			ft_err("Error: can't get floor color\n");
 		color = ft_strtrim(new + 2, " ");
-		cub->floor_color = ft_strdup(color);
-		free(color);
+		cub->floor_color = color;
 	}
 	else if (new[0] == 'C')
 	{	
 		if (cub->ceilling_color)
 			ft_err("Error: can't get ceilling color\n");
 		color = ft_strtrim(new + 2, " ");
-		cub->ceilling_color = ft_strdup(color);
-		free(color);
+		cub->ceilling_color = color;
 	}
 	free(new);
 }
@@ -44,13 +42,13 @@ void	fill_colors(t_cub *cub, char *new)
 void	fill_elemenets(t_cub *cub, char *new, char *join)
 {
 	if (new[0] == 'N' && new[1] == 'O')
-		cub->north_path = ft_strdup(join);
+		cub->north_path = join;
 	else if (new[0] == 'S' && new[1] == 'O')
-		cub->south_path = ft_strdup(join);
+		cub->south_path = join;
 	else if (new[0] == 'W' && new[1] == 'E')
-		cub->west_path = ft_strdup(join);
+		cub->west_path = join;
 	else if (new[0] == 'E' && new[1] == 'A')
-		cub->east_path = ft_strdup(join);
+		cub->east_path = join;
 }
 
 void	handle_elements(char *str, t_cub *cub)
@@ -73,7 +71,6 @@ void	handle_elements(char *str, t_cub *cub)
 		ft_err("image path not found\n");
 	fill_elemenets(cub, new, join);
 	free(xpm);
-	free(join);
 	free(new);
 	close(fd);
 }

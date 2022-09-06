@@ -6,7 +6,7 @@
 /*   By: ahmez-za <ahmez-za@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/05 17:20:39 by ahmez-za          #+#    #+#             */
-/*   Updated: 2022/09/06 17:42:25 by ahmez-za         ###   ########.fr       */
+/*   Updated: 2022/09/06 18:26:28 by ahmez-za         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,9 +27,8 @@ void	fill_the_map(t_map *head, t_cub *cub)
 		if (i > 5)
 		{
 			trim = ft_strtrim(head->content, "\n");
-			cub->map_buffer[j] = ft_strdup(trim);
+			cub->map_buffer[j] = trim;
 			j++;
-			free(trim);
 		}
 		head = head->next;
 		i++;
@@ -62,8 +61,11 @@ void	free_list(t_map *head)
 	while (head)
 	{
 		temp = head;
+		free(temp->content);
 		free(temp);
 		temp = NULL;
 		head = head->next;
 	}
+	free(head);
+	head = NULL;
 }
