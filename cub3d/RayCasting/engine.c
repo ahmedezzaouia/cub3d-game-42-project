@@ -6,7 +6,7 @@
 /*   By: ahmez-za <ahmez-za@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/08 12:17:19 by mabdelou          #+#    #+#             */
-/*   Updated: 2022/09/05 22:29:30 by ahmez-za         ###   ########.fr       */
+/*   Updated: 2022/09/06 12:47:22 by ahmez-za         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,8 @@ void	celing_part(t_cub *cub, int a)
 	cub->wall_px *= 2;
 	cub->celing_px = 450 - (cub->wall_px / 2);
 	while (++cub->ray_pixels < cub->celing_px)
-		img_pixel_put(cub, a, cub->ray_pixels, 0x484B47);
+		img_pixel_put(cub, a, cub->ray_pixels,  (cub->c_rgb[0]*256*256) + (cub->c_rgb[1]*256) + cub->c_rgb[2]);
+
 }
 
 void	wall_part_2(t_cub *cub, int txt_x, int txt_y, int a)
@@ -80,7 +81,7 @@ void	floor_part(t_cub *cub, int a)
 {
 	(void) cub;
 	while (++cub->ray_pixels < 900)
-		img_pixel_put(cub, a, cub->ray_pixels, 0x3A6F7E);
+		img_pixel_put(cub, a, cub->ray_pixels,  (cub->f_rgb[0]*256*256) + (cub->f_rgb[1]*256) + cub->f_rgb[2]);
 }
 
 void	engin(t_cub *cub, int a, int b)
