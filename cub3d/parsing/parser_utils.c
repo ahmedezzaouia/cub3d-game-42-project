@@ -6,7 +6,7 @@
 /*   By: ahmez-za <ahmez-za@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/05 17:17:39 by ahmez-za          #+#    #+#             */
-/*   Updated: 2022/09/05 23:47:21 by ahmez-za         ###   ########.fr       */
+/*   Updated: 2022/09/06 10:41:29 by ahmez-za         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,10 +22,14 @@ void	fill_colors(t_cub *cub, char *new)
 {
 	if (new[0] == 'F')
 	{
+		if (cub->floor_color)
+			ft_err("Error: can't get floor color\n");
 		cub->floor_color = ft_strdup(ft_strtrim(new + 2, " "));
 	}
 	else if (new[0] == 'C')
-	{
+	{	
+		if (cub->ceilling_color)
+			ft_err("Error: can't get ceilling color\n");
 		cub->ceilling_color = ft_strdup(ft_strtrim(new + 2, " "));
 	}
 }

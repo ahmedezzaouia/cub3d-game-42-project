@@ -6,7 +6,7 @@
 /*   By: ahmez-za <ahmez-za@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/18 13:58:21 by mabdelou          #+#    #+#             */
-/*   Updated: 2022/09/05 22:29:30 by ahmez-za         ###   ########.fr       */
+/*   Updated: 2022/09/06 10:22:15 by ahmez-za         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,8 +93,8 @@ void	_mlx_init_1(t_cub *cub)
 		"./Texture/wall.xpm", &a, &b);
 	if (!cub->img_wall)
 		ft_error("can't get img_wall data");
-	cub->img_floor = mlx_xpm_file_to_image(cub->ptr,
-			"./Texture/floor.xpm", &a, &b);
+	cub->img_floor = mlx_xpm_file_to_image(cub->ptr, \
+			"./Texture/floor-texture.xpm", &a, &b);
 	if (!cub->img_floor)
 		ft_error("can't get img_floor data");
 	cub->img_empty = mlx_xpm_file_to_image(cub->ptr,

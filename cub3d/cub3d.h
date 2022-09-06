@@ -6,7 +6,7 @@
 /*   By: ahmez-za <ahmez-za@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/18 11:59:27 by mabdelou          #+#    #+#             */
-/*   Updated: 2022/09/06 09:28:47 by ahmez-za         ###   ########.fr       */
+/*   Updated: 2022/09/06 10:27:55 by ahmez-za         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@
 # include <mlx.h>
 # include <math.h>
 # include <fcntl.h>
-# include "./GetNextLine/get_next_line.h"
+// # include "./GetNextLine/get_next_line.h"
 # include "./CubInit/parssing.h"
 # include "./libft/libft.h"
 
@@ -133,7 +133,6 @@ void	check_north_texture_path(t_cub *cub);
 void	check_south_texture_path(t_cub *cub);
 void	check_west_texture_path(t_cub *cub);
 void	check_east_texture_path(t_cub *cub);
-int		*get_rgb_color(char *str);
 void	check_map_if_valid(t_cub *cub);
 void	get_len_of_map(t_cub *cub);
 
