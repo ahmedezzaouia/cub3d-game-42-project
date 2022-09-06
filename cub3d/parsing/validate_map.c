@@ -6,7 +6,7 @@
 /*   By: ahmez-za <ahmez-za@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/04 00:14:45 by ahmez-za          #+#    #+#             */
-/*   Updated: 2022/09/06 09:49:24 by ahmez-za         ###   ########.fr       */
+/*   Updated: 2022/09/06 10:07:01 by ahmez-za         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,6 +75,8 @@ void	validate_map(t_cub *cub, char *path)
 	init_linked_list(path, &head, reach_map);
 	if (!head)
 		ft_err("Error: No Data\n");
+	if (get_list_lk_len(head) < 6)
+		ft_err("Error: Missing some lines\n");
 	if (get_list_lk_len(head) == 6)
 		ft_err("Error: the map not found\n");
 	check_empty_line(head);
