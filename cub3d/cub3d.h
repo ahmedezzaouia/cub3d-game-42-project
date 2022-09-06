@@ -6,7 +6,7 @@
 /*   By: ahmez-za <ahmez-za@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/18 11:59:27 by mabdelou          #+#    #+#             */
-/*   Updated: 2022/09/06 18:36:41 by ahmez-za         ###   ########.fr       */
+/*   Updated: 2022/09/06 19:20:24 by ahmez-za         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,7 @@ typedef struct s_img
 typedef struct s_cub
 {
 	t_img	**img;
+	char	player;
 	char	*north_path;
 	char	*south_path;
 	char	*west_path;
@@ -136,7 +137,7 @@ void	check_map_if_valid(t_cub *cub);
 void	get_len_of_map(t_cub *cub);
 
 //execution part
-void	player_pos(t_cub *cub);
+void	player_pos(t_cub *cub, int a);
 void	rays_firing(t_cub *cub);
 void	engin(t_cub *cub, int a, int b);
 void	draw_line(t_cub *cub);

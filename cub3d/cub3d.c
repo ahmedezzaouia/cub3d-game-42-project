@@ -6,7 +6,7 @@
 /*   By: ahmez-za <ahmez-za@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/05 21:17:36 by ahmez-za          #+#    #+#             */
-/*   Updated: 2022/09/06 06:25:49 by ahmez-za         ###   ########.fr       */
+/*   Updated: 2022/09/06 19:05:08 by ahmez-za         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,14 +33,36 @@ t_cub	*cub_init_2(void)
 	return (cub);
 }
 
+void	init_directions(t_cub *cub)
+{
+	if (cub->player == 'N')
+	{
+		cub->radien = -M_PI / 2;
+		cub->rev_radien = M_PI / 2;
+	}
+	else if (cub->player == 'S')
+	{
+		cub->radien = M_PI / 2;
+		cub->rev_radien = -M_PI / 2;
+	}
+	else if (cub->player == 'E')
+	{
+		cub->radien = 0;
+		cub->rev_radien = M_PI;
+	}
+	else if (cub->player == 'W')
+	{
+		cub->radien = M_PI;
+		cub->rev_radien = 0;
+	}
+}
+
 t_cub	*cub_init(char **argv)
 {
 	t_cub	*cub;
 
 	(void)argv;
 	cub = cub_init_2();
-	cub->radien = -M_PI / 2;
-	cub->rev_radien = M_PI / 2;
 	cub->ceilling_color = NULL;
 	cub->east_path = NULL;
 	cub->floor_color = NULL;
@@ -64,7 +86,8 @@ int	main(int argc, char **argv)
 	validate_map(cub, argv[1]);
 	_mlx_init(cub);
 	get_len_of_map(cub);
-	player_pos(cub);
+	player_pos(cub, -1);
+	init_directions(cub);
 	mlx_hook(cub->win_cub3d, 2, 0L, key_press, cub);
 	mlx_hook(cub->win_cub3d, 6, 0L, mouse_mv, cub);
 	mlx_hook(cub->win_cub3d, 17, 0L, ft_close, cub);
