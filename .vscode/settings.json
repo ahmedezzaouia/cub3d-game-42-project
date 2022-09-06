@@ -1,6 +1,8 @@
 {
     "files.associations": {
         "libft.h": "c",
-        "cub3d.h": "c"
+        "cub3d.h": "c",
+        "fcntl.h": "c",
+        "unistd.h": "c"
     }
 }

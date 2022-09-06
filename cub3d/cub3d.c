@@ -6,7 +6,7 @@
 /*   By: ahmez-za <ahmez-za@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/05 21:17:36 by ahmez-za          #+#    #+#             */
-/*   Updated: 2022/09/05 22:31:06 by ahmez-za         ###   ########.fr       */
+/*   Updated: 2022/09/06 06:25:49 by ahmez-za         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,8 @@ t_cub	*cub_init(char **argv)
 	cub->south_path = NULL;
 	cub->west_path = NULL;
 	cub->buffer = NULL;
+	cub->f_rgb = malloc(sizeof(int) * 3);
+	cub->c_rgb = malloc(sizeof(int) * 3);
 	return (cub);
 }
 

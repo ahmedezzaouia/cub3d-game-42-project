@@ -6,7 +6,7 @@
 /*   By: ahmez-za <ahmez-za@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/18 11:59:27 by mabdelou          #+#    #+#             */
-/*   Updated: 2022/09/05 22:31:12 by ahmez-za         ###   ########.fr       */
+/*   Updated: 2022/09/06 09:28:47 by ahmez-za         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -113,7 +113,7 @@ void	handle_elements(char *str, t_cub *cub);
 void	check_double(t_map *head);
 void	ft_lstadd_back_min(t_map **lst, t_map *new);
 void	check_elements(t_map *head, t_cub *cub);
-void	check_color(char *color);
+void	check_color(char *color, t_cub *cub, int is_floor);
 int		calcule_map_lines(t_map *head);
 void	check_is_surrounded(t_cub *cub);
 int		is_valid_char(char c);

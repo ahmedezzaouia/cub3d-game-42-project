@@ -6,7 +6,7 @@
 /*   By: ahmez-za <ahmez-za@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/05 17:18:47 by ahmez-za          #+#    #+#             */
-/*   Updated: 2022/09/05 22:29:30 by ahmez-za         ###   ########.fr       */
+/*   Updated: 2022/09/06 09:48:42 by ahmez-za         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ void	check_elements(t_map *head, t_cub *cub)
 	}
 }
 
-void	check_color(char *color)
+void	check_color(char *color, t_cub *cub, int is_floor)
 {
 	char	**split;
 	int		i;
@@ -66,14 +66,15 @@ void	check_color(char *color)
 	while (split[i])
 		i++;
 	if (i != 3)
-	{
-		printf("\x1B[31m Error: collor is not correct\n");
-		exit(1);
-	}
+		ft_err("Error: collor is not correct\n");
 	i = 0;
 	while (split[i])
 	{
 		printf("split[%d] == %d\n", i, ft_atoi(split[i]));
+		if (is_floor)
+			cub->f_rgb[i] = ft_atoi(split[i]);
+		else
+			cub->c_rgb[i] = ft_atoi(split[i]);
 		if (ft_atoi(split[i]) > 255 || ft_atoi(split[i]) < 0)
 		{
 			printf("\x1B[31m Error color numbers range\n");

@@ -6,7 +6,7 @@
 /*   By: ahmez-za <ahmez-za@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/05 17:19:41 by ahmez-za          #+#    #+#             */
-/*   Updated: 2022/09/05 22:29:30 by ahmez-za         ###   ########.fr       */
+/*   Updated: 2022/09/06 09:49:12 by ahmez-za         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,13 +48,15 @@ int	is_valid_char(char c)
 		return (1);
 	else if (c == ' ')
 		return (1);
+	else if (c == '\t')
+		return (1);
 	else
 		return (0);
 }
 
 void	check_is_one_player(char c, int *players)
 {
-	if (c != '0' && c != '1' && c != ' ')
+	if (c != '0' && c != '1' && c != ' ' && c != '\t')
 	{
 		(*players)++;
 	}
@@ -62,11 +64,12 @@ void	check_is_one_player(char c, int *players)
 
 void	check_playes_zero(t_cub *cub, char *str, int i, int j)
 {
-	if (str[j] != ' ' && str[j] != '1')
+	if (str[j] != ' ' && str[j] != '1' && str[j] != '\t')
 	{
 		if (!str[j - 1] || !str[j + 1] || \
-			!cub->map_buffer[i - 1][j] || !cub->map_buffer[i + 1][j])
-			ft_err("Error: Map is not valide\n");
+			!cub->map_buffer[i - 1][j] || \
+			!cub->map_buffer[i + 1][j])
+			ft_err("Error: Map is not valide1111\n");
 		if (str[j] == '0' && (cub->map_buffer[i + 1][j] == ' ' || \
 			str[j + 1] == ' ' || \
 			str[j - 1] == ' ' || cub->map_buffer[i - 1][j] == ' '))

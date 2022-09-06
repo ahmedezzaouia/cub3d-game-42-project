@@ -6,7 +6,7 @@
 /*   By: ahmez-za <ahmez-za@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/05 17:17:39 by ahmez-za          #+#    #+#             */
-/*   Updated: 2022/09/05 22:29:30 by ahmez-za         ###   ########.fr       */
+/*   Updated: 2022/09/05 23:47:21 by ahmez-za         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +73,7 @@ void	check_double(t_map *head)
 	i = 0;
 	while (head)
 	{
-		trim = ft_strtrim(head->content, " ");
+		trim = ft_strtrim(head->content, " \t ");
 		if (trim[0] == '1')
 			break ;
 		head = head->next;
